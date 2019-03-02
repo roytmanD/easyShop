@@ -1,0 +1,219 @@
+
+
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #980b09;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #ffffff;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #bb25d6;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+
+
+#mid-container{
+    background-color: #ffffff;
+    height: 700px;
+}
+#left-container{
+    background-color: #E84C3D;
+    width: 20%;
+    height: 100%;
+}
+#mid-view{
+    background-color: #E84C3D;
+    height: 100%;
+    width: 100%;
+}
+
+p{
+    color: #ffffff;
+}
+
+#burdilio_btn{
+
+    width: 120px;
+    height: 40px;
+    background-color: #E84C3D;
+    color: #ffffff;
+    margin-left:55%;
+
+
+}
+
+#mid-table-container{
+    margin-top: 0px;
+    /*background-color: #bb25d6;*/
+    width: 80%;
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    color: #95989A;
+}
+
+#mid-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+#cart-table-container{
+    margin-top: 20px;
+    /*background-color: orange;*/
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+#stores-table-container{
+    margin-top: 50px;
+    /*background-color: #61dafb;*/
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#stores-table-container #scrolltable{
+    height: 150px;
+}
+
+#1-store-container{
+    width: 20%;
+    height: 30%;
+    /*background-color: gold;*/
+    margin-left: 50px;
+}
+#2-store-container{
+    /*background-color: green;*/
+}
+#3-store-container{
+    /*background-color: indigo;*/
+}
+
+table{
+
+    width: 50px;
+    height: 50px;
+    padding-left: 2em;
+padding-right: 2em;
+    overflow-y: scroll;
+    /*padding-top: 40px;*/
+    /*padding-right: 20px;*/
+    /*padding-left: 20px;*/
+}
+
+#scrolltable { margin-top: 20px; height: 200px; overflow: auto; }
+#scrolltable th div { position: absolute; margin-top: -20px; }
+
+#huynya{
+    overflow-y: scroll;
+}
+
+/*#cart-table-container{*/
+    /*color: #f1f0f3;*/
+    /*background-color: #918790;*/
+    /*width: 100%;*/
+    /*height: 10%;*/
+/*}*/
+
+
+#cart-table-header{
+    margin-top: 3em;
+    margin-left: 2em;
+    background-color: #95989A;
+    color: #ffffff;
+    height: 30%;
+    width: 98%;
+
+}
+th{
+    background-color: #ffffff;
+}
+tr:nth-child(odd){
+    background-color: #d2ded4;
+}
+
+#store-logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    width: 100%;
+    /*background-color: #fafb34;*/
+    text-align: end;
+    margin-bottom: 0;
+    margin-top: 4em;
+}
+
+#store-logo-container img{
+    height: 50px;
+    width: 100px;
+    color: #ffffff;
+
+}
+
+.store-logo-container{
+    height: 100%;
+    width: 150px;
+    margin-left: 50px;
+    background-color: #E84C3D;
+}
+
+#green{
+    background-color: #228618;
+}

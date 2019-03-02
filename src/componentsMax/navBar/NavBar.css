@@ -1,0 +1,17 @@
+a{
+    padding: 5px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.navbar{
+    background-color:#E84C3D ;
+    display: flex;
+}
+
+#signup_btn{
+margin-left: 40%;
+}
+#search_bar{
+margin-left: 30%;
+}
