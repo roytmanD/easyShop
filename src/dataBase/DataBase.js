@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-export const BASE_URL = 'https://cors-anywhere.herokuapp.com/https://api.mlab.com/api/1';
+export const BASE_URL = 'https://api.mlab.com/api/1';
 
 export const GET_shopLists_Url = '/databases/easy_shop/collections/shopLists';
 
@@ -9,14 +9,142 @@ export const API_KEY = 'fsJGVMZJ2RYyINyuEhUMfuDgGzcBUEb3';
 
 export let Resp;
 
+const EASY_SHOP = '/databases/easy_shop/collections';
+
+
+let currentLogin = 'superuser';
+let currentPassword;
+
+
+export let currentUserItems = [];
+
+function getLogin() {
+    return currentLogin;
+}
 
 
 const DataBase=  {
+
+    addToken(login, password){
+        let q = {"login": login};
+        let query = JSON.stringify(q);
+        //  let data = await fetch(url);
+        let url = BASE_URL +  EASY_SHOP + '/tokens' +"?q="+query  + '&apiKey=' + API_KEY;
+        $.ajax({url:url}).then(function (res) {
+            if(res.length === 0){
+                url = BASE_URL +  EASY_SHOP + '/tokens'  + '?apiKey=' + API_KEY;
+                $.ajax({
+                    url: url,
+                    data: JSON.stringify(
+                        {"login": login,
+                            "password" : password}
+                    ),
+                    type: "POST",
+                    contentType: "application/json"
+                });
+            }else{
+                alert(`Username "${login}" already exists! can't sign up! try another one!`);
+
+            }
+        });
+
+
+    },
+
+    async auth(login, password){
+
+        let q = {"login": login,
+            "password" : password};
+let query = JSON.stringify(q);
+      //  let data = await fetch(url);
+        let url = BASE_URL +  EASY_SHOP + '/tokens' +"?q="+query  + '&apiKey=' + API_KEY;
+        $.ajax({url:url}).then(function (res) {
+            if(res.length === 0){
+                //callback(false, 'Wrong email or password')
+                console.log(res);
+            return false;
+            }else{
+               //  alert('success! Authorized as ' + res[0].login );
+                currentLogin = res[0].login;
+
+//
+// let id = {
+//     "$oid": "5c7da4e61f6e4f047db0c74c"
+// };
+       let id =  '/5c7da4e61f6e4f047db0c74c';
+                let q = {"$oid": "5c7da4e61f6e4f047db0c74c" };
+                let query = JSON.stringify(q);
+       url = BASE_URL +  EASY_SHOP + '/tokens' + id  + '&apiKey=' + API_KEY;
+//TODO NIHUYAAAA NE RABOTAET
+
+                 $.ajax({url:url,
+                 data: JSON.stringify({"$set" : {currentLogin: currentLogin}}),
+                 type: 'PUT',
+                 contentType: 'application/json'}).then(function (res) {
+                     if(res.ok){ //TODO does it really check if the response was ok?
+                         console.log("trtatrtart" + res);
+                         // currentLogin = res[0].login;
+                         return true;
+                     }else {
+                         console.log('случилось говно');
+                         return false;
+                     }
+                 }); ////suuuuuukaaaa
+
+
+            }
+
+        })
+    },
+
+
+    getUsersShopLists(){
+        let q = {"login":getLogin()};
+        let query = JSON.stringify(q);
+        let url = BASE_URL +  EASY_SHOP + '/shopLists' +"?q="+query  + '&apiKey=' + API_KEY;
+
+        $.ajax({url:url}).then(function (res) {
+            if(res.length === 0 ){
+                alert('oops u fucked up again');
+            }else{
+          //      console.log(res);
+
+
+                  for(let i =0; i< res.length; i++) {
+                      for (let j = 0; j < res[i].list.length; j++) {
+                         // currentUserItems.push(res[j].list);
+                          if(res[i].list[j]) {
+                              currentUserItems.push(res[i].list[j]);
+                          }
+                      }
+                  }
+
+               // console.log(res[i].list);
+
+                //return res[0].list;
+                console.log(currentUserItems);
+            }
+        })
+    },
+    // auth(token){
+    //     let url = BASE_URL +  EASY_SHOP + '/tokens' + '?apiKey=' + API_KEY;
+    //    fetch(url).then(response => {
+    //        if(response.ok){
+    //            return response.json();
+    //        }
+    //        throw new Error("Reqvest ne prashol");
+    //    }, networkError => {
+    //        console.log(networkError.message)
+    //    }). then(jsonResponse =>{
+    //
+    //    })
+    // },
     addList(list) {
         let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
         $.ajax({
             url: url,
-            data: JSON.stringify({"list": list}),
+            data: JSON.stringify({"list": list,
+            'login':currentLogin}),
             type: "POST",
             contentType: "application/json"
         });

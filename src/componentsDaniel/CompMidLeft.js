@@ -4,7 +4,32 @@ import './LeftC.css';
 
 let total_sum = 420;
 let saved_sum = 5;
+
+//let flag = false;
 export class CompMidLeft extends React.Component{
+
+    constructor(props){
+        super(props);
+         this.state = {
+             economyMode : false
+         };
+        this.toggleMode = this.toggleMode.bind(this);
+    };
+
+    toggleMode = () => {
+      //  this.props.economyMode = true ? false : true; //TODO object is not extensible
+    //console.log(this.props.economyMode);
+       let  flag = this.state.economyMode;
+       this.setState({economyMode:  !flag } );
+      console.log(this.state.economyMode);
+
+        this.props.onToggle1(flag);
+
+    };
+
+
+//onClick={()=>this.props.action(flag)} //TODO wtf....
+
 
     render(){
 
@@ -14,8 +39,8 @@ export class CompMidLeft extends React.Component{
                     <p>Optional</p>
                     <div id="toggle-economy">
                         <label className="switch">
-                            <input type="checkbox"/>
-                            <span className="slider round"></span>
+                            <input onChange={this.toggleMode} id="mode_toggle" type="checkbox"/>
+                            <span className="slider round"/>
                         </label>
                     </div>
                     <p>Economy</p>

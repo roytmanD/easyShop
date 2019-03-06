@@ -7,13 +7,17 @@ import MidTableContainer from "./mid-table-container";
 
 
  class ShoppingCart extends React.Component{
-    render() {
+
+//TODO put prop in left
+
+     render() {
+
 
         return (
 
             <div id="mid-container">
                 <CompMidLeft/>
-                <MidTableContainer/>
+                <MidTableContainer modeEconom={false}/>
             </div>
 
 

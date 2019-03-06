@@ -217,3 +217,25 @@ tr:nth-child(odd){
 #green{
     background-color: #228618;
 }
+
+#go-to-map, #go-to-catalogue{
+    background-color: red;
+    height: 75px;;
+    width: 150px;
+    margin: 10%;
+}
+
+
+/*#go-to-map{*/
+    /*margin-right: 20%;*/
+/*}*/
+/*#go-to-catalogue{*/
+    /*margin-left: 15%;*/
+/*}*/
+
+#welcome-text{
+    font-size: larger;
+    margin-top: 20%;
+    margin-left: 20%;
+    color: #222222;
+}
