@@ -1,10 +1,17 @@
 import React from 'react';
 
-let data = [
-    ['item 1', 2, 56],
-    ['item 2', 3, 965],
-    ['item 3', 1, 345],
-]
+// let data = [
+//     ['item 1', 2, 56],
+//     ['item 2', 3, 965],
+//     ['item 3', 1, 345],
+// ]
+
+
+let data = ['item',
+'jtem',
+'ktem',
+    'ktem',
+    'ktem'];
 
 export class TableContents extends React.Component{
 
@@ -16,18 +23,17 @@ export class TableContents extends React.Component{
     }
 
     render() {
-        if(this.state.data !== undefined){
-            data = this.state.data;
-        }
+        // if(this.state.data !== undefined){
+        //     data = this.state.data;
+        // }
 
-
+//TODO srochno
         return (
             <tbody>
             { data.map((element, index) =>
                 <tr key={index}>
-                    {element.map((item, i) =>
-                        <td key={i}>{item}</td>
-                    )}
+                        <td key={index}>{element}</td>
+                    <td>1</td>
                 </tr>
             )}
             </tbody>

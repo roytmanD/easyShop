@@ -3,6 +3,7 @@ import {ItemsTable} from "./ItemsTable";
 import store_1 from "./Images/store_1@2x.png";
 import store_2 from "./Images/store_2@2x.png";
 import store_3 from "./Images/store_3@2x.png";
+import DataBase from "../dataBase/DataBase";
 
 
 
@@ -24,7 +25,7 @@ const data = [
 
 
 //TODO 4200
-const usersList = [
+let usersList = [
     ['beer', 6],
     ['weed', 30],
     ['burritto', 1],
@@ -33,10 +34,19 @@ const usersList = [
     ['humus', 3]
 ]
 
+let vegetarianList = [
+    ['broccoli', '1 piece'],
+    ['soy beans' , '1 pack'],
+    ['tofu', '1 pack'],
+    ['rice', '1 pack'],
+    ['potatoes', '1 kg']
+]
+
  class MidTableContainer extends React.Component {
 constructor(props){
     super(props);
     this.state = {
+        isAuth: this.props.isAuth,
         modeToggled: this.props.modeToggled
     }
 
@@ -45,10 +55,17 @@ constructor(props){
      //  data = currentUserItems;
 
      render() {
-         console.log(this.props.modeToggled + "2) got a property from CompMid at mid-table container");
-    console.log(this.state.modeToggled + " a v kontainere to!");
+
+    if(this.state.isAuth !== "AUTH"){
+        usersList = vegetarianList;
+        console.log(this.state.isAuth + " fddfdfd");
+    }else {
+        //usersList = DataBase.getLastUserList(); //TODO create this function
+    }
+
          if (this.props.modeToggled === 'econom') {
              return (
+
                  <div id='mid-table-container'>
                      <div id="cart-table-container">
                          <div id="cart-table-header">My items</div>

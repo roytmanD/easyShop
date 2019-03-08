@@ -11,6 +11,10 @@ export let Resp;
 
 const EASY_SHOP = '/databases/easy_shop/collections';
 
+const  AUTH = "AUTH";
+
+
+export const sessionStorage = window.sessionStorage;
 
 let currentLogin = 'superuser';
 let currentPassword;
@@ -67,6 +71,10 @@ let query = JSON.stringify(q);
                //  alert('success! Authorized as ' + res[0].login );
                 currentLogin = res[0].login;
 
+                sessionStorage.setItem(currentLogin, AUTH);
+                sessionStorage.setItem("lastAuth", currentLogin);//TODO костылек??????? несомненно
+
+                return   true;
 //
 // let id = {
 //     "$oid": "5c7da4e61f6e4f047db0c74c"
@@ -92,23 +100,26 @@ let query = JSON.stringify(q);
 //                  }); ////suuuuuukaaaa
 
 
-                url = BASE_URL + EASY_SHOP + "/current" +'/5c80103efb6fc072012f6de9' + '&apiKey=' +API_KEY;
-                console.log("huuuyyyy" + url);
-                $.ajax({url:url,
-                data: JSON.stringify({"$set" : {'currentUser': res[0].login}}),
-                type: 'PUT',
-                contentType: 'application/json'}).then(function (res) {
-                    console.log("resssss +" +res);
-                })
+                // url = BASE_URL + EASY_SHOP + "/current" +'/5c80103efb6fc072012f6de9' + '&apiKey=' +API_KEY;
+                // console.log("huuuyyyy" + url);
+                // $.ajax({url:url,
+                // data: JSON.stringify({"$set" : {'currentUser': res[0].login}}),
+                // type: 'PUT',
+                // contentType: 'application/json'}).then(function (res) {
+                //     console.log("resssss +" +res);
+                // })
+
+
 
             }
 
         })
+
     },
 
 
-    getUsersShopLists(){ // TODO забирает из бд шопинг листы карент юзера
-        let q = {"login":getLogin()};
+    getUsersShopLists(user){ // TODO забирает из бд шопинг листы карент юзера
+        let q = {"login":user}; //TODO lil edit b careful
         let query = JSON.stringify(q);
         let url = BASE_URL +  EASY_SHOP + '/shopLists' +"?q="+query  + '&apiKey=' + API_KEY;
 

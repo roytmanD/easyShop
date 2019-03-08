@@ -4,6 +4,7 @@ import './NavBar.css';
 import logo from './logo@2x.png';
 
 import Search from '../search/Search';
+import {sessionStorage} from "../../dataBase/DataBase";
 
 
 /*let searchInp = <input className='collapse' placeholder='Type to search' id="search"/>;
@@ -14,6 +15,20 @@ let searchOpenBtnC;
 */
 
 class NavigBar extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isAuth: sessionStorage.getItem(sessionStorage.getItem("lastAuth"))
+        }
+        this.handleAuthChange = this.handleAuthChange.bind(this);
+    }
+
+
+
+
+    handleAuthChange(){ //this is a weak way to rerender nav bar! think a bit.. just later.......
+        this.setState(sessionStorage.getItem(sessionStorage.getItem("lastAuth")));
+    }
     /* constructor(props) {
          super(props);
          this.state = {
@@ -46,6 +61,7 @@ class NavigBar extends React.Component {
             return <a href={'/' + header} key={header}>{header}</a>
         });
 
+        if(this.state.isAuth === 'AUTH'){
         return (
 
             <nav className='navbar'>
@@ -56,7 +72,17 @@ class NavigBar extends React.Component {
             </nav>
 
 
-        )
+        )}else {
+            return(
+            <nav className='navbar'>
+                <img src={logo}/>
+                <button onClick={this.handleAuthChange}>knopych</button>
+                {headers}
+                <Search/>
+                <a id="signup_btn" href='/registration'>Welcome, {sessionStorage.getItem("lastAuth")}!</a>
+            </nav>
+            );
+        }
     }
 
 
