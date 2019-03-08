@@ -135,19 +135,7 @@ let query = JSON.stringify(q);
             }
         })
     },
-    // auth(token){
-    //     let url = BASE_URL +  EASY_SHOP + '/tokens' + '?apiKey=' + API_KEY;
-    //    fetch(url).then(response => {
-    //        if(response.ok){
-    //            return response.json();
-    //        }
-    //        throw new Error("Reqvest ne prashol");
-    //    }, networkError => {
-    //        console.log(networkError.message)
-    //    }). then(jsonResponse =>{
-    //
-    //    })
-    // },
+
     addList(list) {
         let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
         $.ajax({
@@ -180,27 +168,27 @@ let query = JSON.stringify(q);
 
     },
 
+    removeList(doc){ //TODO yet deletes too much..
+        console.log(doc);
+        let query={"list":doc.json};
+        let q='?q='+query;
+        let url=BASE_URL+GET_shopLists_Url+q+'&apiKey='+API_KEY;
+        console.log(url);
+        $.ajax({
+            url: url,
+            data:JSON.stringify([]),
+            type: 'PUT',
+            contentType: 'application/json'
+        }).catch((e)=>{console.log(e)})
 
-    getShopList(){
+    },
+
+    getShopList() {
         let res;
-       /*let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
-       fetch(url).then((response)=>{
-           if(response.ok)
-           {return response.json()
-               console.log(response.json())
-           }})
-           .then((jsonResponse)=>{return jsonResponse})   */
-      let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
-      console.log($.ajax({
-          type: 'GET',
-          url: url,
-          dataType:'json',
-          success:(data)=>{
-              data=res;
-              return data}
-      })) ;
+        let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
+        res = fetch(url).then((response) => response.json());
         console.log(res);
-          return res;
+        return res;
     }
 
 

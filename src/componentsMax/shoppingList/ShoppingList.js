@@ -1,53 +1,66 @@
 import React from 'react';
 import './ShoppingList.css';
 import ItemList from './itemList';
+import DataBase from '../../dataBase/DataBase';
 
 
-
-let counter=0;
-
-
-let inputRef1;
-let inputRef2;
-let inputRef3;
 
 
 let count = 0;
 
-
+let shopList=[];
 
 
 class ShoppingList extends React.Component {
 
+
+
+
     constructor(props) {
 
         super(props);
-
+        this.myRefs = [React.createRef(), React.createRef(), React.createRef()];
+        this.allRefs = [].concat(this.myRefs);
         this.state = {
-            inputCols:[<ItemList key={count++} inputRef1={(input)=>{inputRef1= input}} inputRef2={(input)=>{inputRef2= input}} inputRef3={(input)=>{inputRef3= input}}/>]
-
+            inputCols: [<ItemList myRefs={this.myRefs} key={count++}/>]
         };
 
-        this.addItemCol=this.addItemCol.bind(this);
-        this.handleCreateList=this.handleCreateList.bind(this);
-    }
 
-    addItemCol(){
-
-        let currInputCols=this.state.inputCols;
-       currInputCols.push(<ItemList inputRef1={(input)=>{inputRef1= input}} inputRef2={(input)=>{inputRef2= input}} inputRef3={(input)=>{inputRef3= input}} key={count++}/>);
-        this.setState({inputCols:currInputCols});
-    }
-
-    handleCreateList(){
-       // console.log(this.state.inputCols[0].refs.ref0);
-        console.log(inputRef1.value);
-        console.log(inputRef2.value);
-        console.log(inputRef3.value);
+        this.addItemCol = this.addItemCol.bind(this);
+        this.handleCreateList = this.handleCreateList.bind(this);
 
     }
 
+    addItemCol() {
+        // adding new refs to refs array
+        let newRefs = [React.createRef(), React.createRef(), React.createRef()];
+        let currRefs = this.allRefs;
+        console.log(currRefs);
+        this.allRefs = currRefs.concat(newRefs);
+        console.log(this.allRefs);
 
+        let currInputCols = this.state.inputCols;
+        currInputCols.push(<ItemList myRefs={newRefs} key={count++}/>);
+        this.setState({inputCols: currInputCols});
+
+    }
+
+    handleCreateList() {
+        // console.log(this.state.inputCols[0].refs.ref0);
+        let allRefs = this.allRefs;
+        console.log(allRefs.map((ref) => {
+           return ref.current.value
+        }));
+        for (let i = 0; i < allRefs.length; i++) {
+            if(allRefs[i].current.value!=""){
+            shopList.push(allRefs[i].current.value)
+        }}
+        if(shopList!=[]) {
+            DataBase.addList(shopList);
+        }
+        shopList=[];
+
+    }
 
 
     render() {
@@ -57,7 +70,6 @@ class ShoppingList extends React.Component {
                     <div className='createHeader col-3'>Create your shopping list</div>
                     <div className='col-9'>
 
-                        <form id='form' className='form-group'>
 
                             <div className='row'>
                                 <div className='inputContainer'>
@@ -68,10 +80,9 @@ class ShoppingList extends React.Component {
                                     })}
                                 </div>
                             </div>
-                        </form>
-                        <div>
-                            <button className='buttons' onClick={this.addItemCol}>+</button>
-                            <button onClick={this.handleCreateList}>Create</button>
+                        <div className='row'>
+                            <div className='col-6'><button  onClick={this.addItemCol}>+</button></div>
+                            <div className='col-6'><button  onClick={this.handleCreateList}>Create</button></div>
                         </div>
                     </div>
                 </div>

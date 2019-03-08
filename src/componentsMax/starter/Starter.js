@@ -1,4 +1,5 @@
 import React from 'react';
+import './Starter.css';
 
 
 
@@ -11,8 +12,8 @@ class Starter extends React.Component{
             return <h1 key={header}>{header}</h1>
         })
         return(
-            <div>
-                <div className='text'>
+            <div className='text'>
+                <div >
                     {headers}
                 </div>
                 <button>Start</button>

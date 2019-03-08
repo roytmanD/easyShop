@@ -8,11 +8,11 @@ function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     let cla='fas fa-angle-right';
     return (
-       /* <div
-            className={className}
-            style={{ ...style, display: "block"}}
-            onClick={onClick}
-        />*/
+        /* <div
+             className={className}
+             style={{ ...style, display: "block"}}
+             onClick={onClick}
+         />*/
         <i className={[cla,className]} onClick={onClick} ></i>
     );
 }
@@ -29,16 +29,16 @@ class CarousalContainer extends React.Component{
         }
         return (
             <div className='back'>
-            <div className='container'>
-                <Slider {...settings}>
-                    {this.props.carEls.map(
-                        (carEl)=>{
-                            return <CarousalElement key={carEl} carEl={carEl}/>
-                        }
-                    )}
-                </Slider>
+                <div className='container'>
+                    <Slider {...settings}>
+                        {this.props.carEls.map(
+                            (carEl,i)=>{
+                                return <CarousalElement key={carEl} carEl={carEl} carElBtn={this.props.carElsBtn} ref={this.props.myRefs[i]}/>
+                            }
+                        )}
+                    </Slider>
 
-            </div>
+                </div>
             </div>
             /*<div>
                 {this.props.carEls.map(
