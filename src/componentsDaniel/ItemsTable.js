@@ -11,22 +11,32 @@ const local_data = [
 
 export class ItemsTable extends React.Component{
 
-    // constructor(props){
-    //     super(props);
-    //     this.state = {'list':[]}
-    // }
- //   data = DataBase.getUsersShopLists();
-
+ constructor(props){
+     super(props);
+     this.state = {
+         data: this.props.data,
+         extended: this.props.extended,
+         size: this.props.size
+     }
+ }
+    logData(){
+        console.log(this.state.data);
+    }
 
     render() {
 
+     this.logData();
+
      return(
+         <div>
+             <div className="table-title-container">
+         <TableTitle extended = {this.state.extended} size={this.state.size}/>
+             </div>
          <div id="scrolltable">
-                <table>
-                    <TableTitle/>
-                    <TableContents data={this.props.data}/>
-                    <button type="submit" onClick={DataBase.getUsersShopLists}>Refresh lists</button>
+                <table className={this.state.size}>
+                    <TableContents data={this.state.data} size={this.state.size}/>
                 </table>
+         </div>
          </div>
         );
     }

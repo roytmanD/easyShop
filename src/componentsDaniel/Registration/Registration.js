@@ -34,12 +34,14 @@ class Registration extends React.Component{
 
    if( DataBase.auth(this.logRef.current.value ,  this.pwdRef.current.value)) {
        this.setState({condition: 'authorized'});
+
+      // this.props.onHandleStage('auth'); TODO
    }else{
        alert("Invalid login or password! try again")
    }
     }
 
-    signOut(){
+    signOut= () =>{
         this.setState({condition: 'unauthorized'});
     }
 

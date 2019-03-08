@@ -1,5 +1,7 @@
 import React from 'react';
 import './CarousalElement.css';
+import {TableTitle} from "../../componentsDaniel/TableTitle";
+import {TableContents} from "../../componentsDaniel/TableContents";
 
 class CarousalElement extends React.Component{
     render(){
@@ -9,18 +11,8 @@ class CarousalElement extends React.Component{
                 <div className='red'></div>
             <div className='card-body'>
 
-
-                <div>
-                <h1>{carEl.type}</h1></div>
-                <div>
-
-                <h1>{carEl.product}</h1></div>
-                <div>
-
-                <h1>{carEl.price}</h1></div>
-                <div>
-
-                <h1>{carEl.organic}</h1></div>
+                <TableTitle/>
+                <TableContents/>
 
             </div>
             </div>

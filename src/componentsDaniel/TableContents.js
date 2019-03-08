@@ -1,23 +1,26 @@
 import React from 'react';
 
-// let data = [
-//     ['item 1', 2, 56],
-//     ['item 2', 3, 965],
-//     ['item 3', 1, 345],
-// ]
+let data = [
+    ['item 1', 2, 56],
+    ['item 2', 3, 965],
+    ['item 3', 1, 345],
+]
 
 export class TableContents extends React.Component{
 
-     // static propTypes = {
-     //     data: []
-     //
-     // }
+    constructor(props){
+        super(props);
+        this.state = {
+            data: this.props.data //this data goes from place marked as TODO 4200
+        }
+    }
 
     render() {
-        // if(this.props.data !== undefined){
-        //     data = this.props.data;
-        // }
-        let data = this.props.data;
+        if(this.state.data !== undefined){
+            data = this.state.data;
+        }
+
+
         return (
             <tbody>
             { data.map((element, index) =>

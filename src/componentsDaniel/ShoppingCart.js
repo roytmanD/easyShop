@@ -2,8 +2,10 @@ import React from 'react';
 import './LeftC.css';
 import {CompMidLeft} from "./CompMidLeft";
 import MidTableContainer from "./mid-table-container";
+import {CompMid} from "./comp_mid";
 
-
+// <CompMidLeft/>
+//                 <MidTableContainer modeEconom={false}/>
 
 
  class ShoppingCart extends React.Component{
@@ -16,8 +18,7 @@ import MidTableContainer from "./mid-table-container";
         return (
 
             <div id="mid-container">
-                <CompMidLeft/>
-                <MidTableContainer modeEconom={false}/>
+               <CompMid/>
             </div>
 
 
@@ -27,6 +28,5 @@ import MidTableContainer from "./mid-table-container";
 
 }
 
-// ReactDOM.render(ShoppingCart, document.getElementById("root"));
 
 export default ShoppingCart;

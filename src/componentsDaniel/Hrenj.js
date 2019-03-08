@@ -60,4 +60,4 @@ export class Hrenj extends React.Component {
     }
 }
 
-// render(<App />, document.getElementById("root"));
+

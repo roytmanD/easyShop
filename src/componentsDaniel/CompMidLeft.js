@@ -1,29 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './LeftC.css';
 
 let total_sum = 420;
 let saved_sum = 5;
 
-//let flag = false;
+
 export class CompMidLeft extends React.Component{
 
     constructor(props){
         super(props);
          this.state = {
-             economyMode : false
+             modeToggled : this.props.modeToggled
          };
-        this.toggleMode = this.toggleMode.bind(this);
+        //this.toggleMode = this.toggleMode.bind(this);
     };
 
     toggleMode = () => {
       //  this.props.economyMode = true ? false : true; //TODO object is not extensible
     //console.log(this.props.economyMode);
-       let  flag = this.state.economyMode;
-       this.setState({economyMode:  !flag } );
-      console.log(this.state.economyMode);
+        console.log(this.state.modeToggled + " fag1");
+       let  flag = this.state.modeToggled;
 
-        this.props.onToggle1(flag);
+       if( flag === "optimal"){
+           flag = "econom";
+       }else{
+           flag = "optimal";
+       }
+
+       console.log(flag + "flag2");
+       this.setState({modeToggled:  flag } );
+      console.log(this.state.modeToggled);
+
+        this.props.toggle(flag);
 
     };
 
@@ -35,22 +43,25 @@ export class CompMidLeft extends React.Component{
 
         return (
                 <div id="left-container">
-                    <p><strong>START</strong> SAVING MONEY NOW</p>
-                    <p>Optional</p>
-                    <div id="toggle-economy">
-                        <label className="switch">
-                            <input onChange={this.toggleMode} id="mode_toggle" type="checkbox"/>
-                            <span className="slider round"/>
-                        </label>
+                    <p className="left-bar-header"><strong>START</strong> SAVING MONEY NOW</p>
+                    <span className="toggle-container">
+                        <p>Optimal
+                            <div id="toggle-economy">
+                                <label className="switch">
+                                    <input onChange={this.toggleMode} id="mode_toggle" type="checkbox"></input>
+                                    <span className="slider round"/>
+                                </label>
+                            </div>
+                         Economy</p>
+                    </span>
+
+                    <div className="left-bar-total">
+                        <p>TOTAL:</p>
+                        <p>${total_sum}</p>
+
+                        <p>YOUR ECONOMY:</p>
+                        <p>${saved_sum}</p>
                     </div>
-                    <p>Economy</p>
-
-
-                    <p>TOTAL:</p>
-                    <p>${total_sum}</p>
-
-                    <p>YOUR ECONOMY:</p>
-                    <p>${saved_sum}</p>
                 </div>
 
         );
@@ -58,4 +69,3 @@ export class CompMidLeft extends React.Component{
 }
 
 
-ReactDOM.render(CompMidLeft, document.getElementById("root"));

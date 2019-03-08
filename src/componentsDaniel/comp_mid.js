@@ -4,16 +4,15 @@ import './LeftC.css';
 import {CompMidLeft} from "./CompMidLeft";
 import MidTableContainer from "./mid-table-container";
 
-
+//TODO WTF compMid not used? shit
 
 export class CompMid extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            economMod: false
+            modeToggled: "optimal"
         };
-
-        this.toggleStateHandler = this.toggleStateHandler.bind(this);
+         this.toggleStateHandler = this.toggleStateHandler.bind(this);
     };
 
 
@@ -25,18 +24,19 @@ export class CompMid extends React.Component{
     // }
 
     toggleStateHandler = (toggleStateFrom_CompMidLeft) =>{
-        console.log('previous parent state ----' + JSON.stringify(this.state.economMode));
         this.setState({
-            economMode: toggleStateFrom_CompMidLeft
+            modeToggled: toggleStateFrom_CompMidLeft
         });
+
+        console.log(this.state.modeToggled +"1) got new state at comp_mid from compMidLeft!")
     };
     render() {
 
         return (
 
             <div id="mid-container">
-                <CompMidLeft onToggle1={this.toggleStateHandler} economMode={this.state.economMod}/>
-                <MidTableContainer/>
+                <CompMidLeft toggle={this.toggleStateHandler} modeToggled={this.state.modeToggled}/>
+                <MidTableContainer modeToggled={this.state.modeToggled}/>
             </div>
 
 
@@ -46,4 +46,4 @@ export class CompMid extends React.Component{
 
 }
 
-ReactDOM.render(CompMid, document.getElementById("root"));
+//TODO
