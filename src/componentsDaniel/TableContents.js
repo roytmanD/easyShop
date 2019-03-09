@@ -18,26 +18,55 @@ export class TableContents extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            data: this.props.data //this data goes from place marked as TODO 4200
+            data: this.props.data, //this data goes from place marked as TODO 4200
+            incrementable: this.props.incrementable
         }
     }
 
     render() {
-        // if(this.state.data !== undefined){
-        //     data = this.state.data;
-        // }
+         if(this.state.data !== undefined){
+             data = this.state.data;
+         }
 
-//TODO srochno
         return (
             <tbody>
             { data.map((element, index) =>
                 <tr key={index}>
                         <td key={index}>{element}</td>
-                    <td>1</td>
+                    {this.state.incrementable ? <UserCartTableTd/> : <td>1</td>}
                 </tr>
             )}
             </tbody>
         );
     }
 
+}
+
+export class UserCartTableTd  extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {quantity: 1
+        }
+
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
+    }
+
+    increment(){
+        this.setState({quantity:++this.state.quantity});
+    }
+    decrement(){
+        this.setState({quantity:--this.state.quantity});
+    }
+
+    render() {
+
+        return (
+            <td>
+                <button onClick={this.decrement}>-</button>
+                {this.state.quantity}
+                <button onClick={this.increment}>+</button> </td>
+        );
+    }
 }

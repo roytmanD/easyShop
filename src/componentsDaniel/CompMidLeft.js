@@ -3,6 +3,8 @@ import './LeftC.css';
 
 let total_sum = 420;
 let saved_sum = 5;
+let differenceType = 'ECONOMY';
+
 
 
 export class CompMidLeft extends React.Component{
@@ -12,34 +14,36 @@ export class CompMidLeft extends React.Component{
          this.state = {
              modeToggled : this.props.modeToggled
          };
-        //this.toggleMode = this.toggleMode.bind(this);
+        this.toggleMode = this.toggleMode.bind(this);
     };
 
     toggleMode = () => {
-      //  this.props.economyMode = true ? false : true; //TODO object is not extensible
-    //console.log(this.props.economyMode);
-        console.log(this.state.modeToggled + " fag1");
+
        let  flag = this.state.modeToggled;
 
-       if( flag === "optimal"){
+       if( flag === "optimal"){ //todo mk ternary
            flag = "econom";
        }else{
            flag = "optimal";
        }
 
-       console.log(flag + "flag2");
-       this.setState({modeToggled:  flag } );
-      console.log(this.state.modeToggled);
 
-        this.props.toggle(flag);
+       this.setState({modeToggled:  flag  } );
+
+
+        this.props.toggle(flag); //event handler func from parent compMid;
+
 
     };
 
 
-//onClick={()=>this.props.action(flag)} //TODO wtf....
-
 
     render(){
+        if(this.state.modeToggled === "optimal"){
+            differenceType = "OVERPAY";
+        }else{
+            differenceType = "ECONOMY";
+        }
 
         return (
                 <div id="left-container">
@@ -59,7 +63,7 @@ export class CompMidLeft extends React.Component{
                         <p>TOTAL:</p>
                         <p>${total_sum}</p>
 
-                        <p>YOUR ECONOMY:</p>
+                        <p>YOUR {differenceType}:</p>
                         <p>${saved_sum}</p>
                     </div>
                 </div>

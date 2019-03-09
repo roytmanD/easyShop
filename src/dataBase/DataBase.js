@@ -75,40 +75,6 @@ let query = JSON.stringify(q);
                 sessionStorage.setItem("lastAuth", currentLogin);//TODO костылек??????? несомненно
 
                 return   true;
-//
-// let id = {
-//     "$oid": "5c7da4e61f6e4f047db0c74c"
-// };
-//        let id =  '/5c7da4e61f6e4f047db0c74c';
-//                 let q = {"$oid": "5c7da4e61f6e4f047db0c74c" };
-//                 let query = JSON.stringify(q);
-//        url = BASE_URL +  EASY_SHOP + '/tokens' + "/5c7da4e61f6e4f047db0c74c2"  + '&apiKey=' + API_KEY;
-// //TODO NIHUYAAAA NE RABOTAET
-//
-//                  $.ajax({url:url,
-//                  data: JSON.stringify({"$set" : {currentLogin: currentLogin}}),
-//                  type: 'PUT',
-//                  contentType: 'application/json'}).then(function (res) {
-//                      if(res.ok){ //TODO does it really check if the response was ok?
-//                          console.log("trtatrtart" + res);
-//                          // currentLogin = res[0].login;
-//                          return true;
-//                      }else {
-//                          console.log('случилось говно');
-//                          return false;
-//                      }
-//                  }); ////suuuuuukaaaa
-
-
-                // url = BASE_URL + EASY_SHOP + "/current" +'/5c80103efb6fc072012f6de9' + '&apiKey=' +API_KEY;
-                // console.log("huuuyyyy" + url);
-                // $.ajax({url:url,
-                // data: JSON.stringify({"$set" : {'currentUser': res[0].login}}),
-                // type: 'PUT',
-                // contentType: 'application/json'}).then(function (res) {
-                //     console.log("resssss +" +res);
-                // })
-
 
 
             }

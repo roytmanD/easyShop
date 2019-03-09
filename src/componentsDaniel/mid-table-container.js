@@ -42,6 +42,17 @@ let vegetarianList = [
     ['potatoes', '1 kg']
 ]
 
+let shabbatList = [
+    ['hala', '1 piece'],
+    ['kedush vine', '1 bottle'],
+    ['humus', '1 pack'],
+    ['meat', '1 kg'],
+    ['rice', '1 pack']
+];
+
+let lists = [vegetarianList, shabbatList];
+
+//TODO mid table container will pass incrementable propperty
  class MidTableContainer extends React.Component {
 constructor(props){
     super(props);
@@ -69,7 +80,7 @@ constructor(props){
                  <div id='mid-table-container'>
                      <div id="cart-table-container">
                          <div id="cart-table-header">My items</div>
-                         <ItemsTable data={usersList} extended={false} size="full"/>
+                         <ItemsTable data={usersList} extended={false} size="full" incrementable={true}/>
                      </div>
                      <div id='stores-table-container'>
                          <div id="store-logo-container">
@@ -85,9 +96,9 @@ constructor(props){
                                  <img src={store_3}/>
                              </div>
                          </div>
-                         <ItemsTable data={data} extended={true} size="small"/>
-                         <ItemsTable data={data} extended={true} size="small"/>
-                         <ItemsTable data={data} extended={true} size="small"/>
+                         <ItemsTable data={data} extended={true} size="small" incrementable={false}/>
+                         <ItemsTable data={data} extended={true} size="small" incrementable={false}/>
+                         <ItemsTable data={data} extended={true} size="small" incrementable={false}/>
                      </div>
 
                      <button id="burdilio_btn">
@@ -99,7 +110,7 @@ constructor(props){
              return (
               <div id='mid-table-container'>
                   <div id="cart-table-header">My items</div>
-                  <ItemsTable data={usersList} extended={false} size="medium"/>
+                  <ItemsTable data={usersList} extended={false} size="medium" incrementable={true}/>
                   <div id='stores-table-container'>
                       <div id="store-logo-container">
                           <div id="chippest-store" className="store-logo-container">
@@ -107,7 +118,7 @@ constructor(props){
                               <img src={store_1}/>
                           </div>
                       </div>
-                      <ItemsTable data={data} extended={true} size="full"/>
+                      <ItemsTable data={data} extended={true} size="full" incrementable={false}/>
               </div>
               </div>
              );

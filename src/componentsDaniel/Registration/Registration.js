@@ -19,6 +19,8 @@ class Registration extends React.Component{
         this.logIn = this.logIn.bind(this);
     }
 
+
+
     signIn() {
 
         this.setState({loginValue: this.logRef.current.value,
@@ -51,10 +53,17 @@ class Registration extends React.Component{
 
     signOut= () =>{
         this.setState({isAuth: 'non-auth'});
+        sessionStorage.setItem(sessionStorage.getItem("lastAuth"), "non-auth");
     }
 
     render() {
+        console.log(this.state.isAuth + "am i auth or fuckin no?");
 
+        if(this.state.isAuth === null){
+            this.setState({isAuth: "non-auth"});
+            // TODO is it okay to rerender just because of it?
+            //TODO mb its better to just add OR NULL in the first if?
+        }
 
         if(this.state.isAuth === 'non-auth') {
             return (
@@ -70,19 +79,10 @@ class Registration extends React.Component{
                 </div>
 
             );
-        }else if(this.state.isAuth === 'shitt'){
-            return(
-                <div id="registration_container">
-                    <div id="fields-container">
-                        <p id="welcome-text">Welcome, {this.logRef.current.value}!</p>
-                        <a  id="go-to-catalogue" href={"/catalogue"}>Create shopping list</a>
-                        <a id="go-to-map" href={"/map"}>Find stores around</a>
-                        <button onClick={this.signOut}>sign out</button>
-                    </div>
-                </div>
-            );
         }else if(this.state.isAuth==='AUTH'){
             return <Redirect to='/catalogue'/>
+        }else {
+            return <p id="u-totally-sucked">ITS U-TOTALLY-SUCKED COMPONENT</p>
         }
     }
 

@@ -5,6 +5,7 @@ import logo from './logo@2x.png';
 
 import Search from '../search/Search';
 import {sessionStorage} from "../../dataBase/DataBase";
+import DataBase from "../../dataBase/DataBase";
 
 
 /*let searchInp = <input className='collapse' placeholder='Type to search' id="search"/>;
@@ -21,6 +22,7 @@ class NavigBar extends React.Component {
             isAuth: sessionStorage.getItem(sessionStorage.getItem("lastAuth"))
         }
         this.handleAuthChange = this.handleAuthChange.bind(this);
+        this.signOut =this.signOut.bind(this);
     }
 
 
@@ -28,6 +30,13 @@ class NavigBar extends React.Component {
 
     handleAuthChange(){ //this is a weak way to rerender nav bar! think a bit.. just later.......
         this.setState(sessionStorage.getItem(sessionStorage.getItem("lastAuth")));
+    }
+
+    signOut(){
+        sessionStorage.setItem(sessionStorage.getItem("lastAuth"), "non-auth");
+
+        this.handleAuthChange();
+
     }
     /* constructor(props) {
          super(props);
@@ -66,21 +75,23 @@ class NavigBar extends React.Component {
 
             <nav className='navbar'>
                 <img src={logo}/>
-                {headers}
-                <Search/>
-                <a id="signup_btn" href='/registration'>Signup</a>
-            </nav>
-
-
-        )}else {
-            return(
-            <nav className='navbar'>
-                <img src={logo}/>
                 <button onClick={this.handleAuthChange}>knopych</button>
                 {headers}
                 <Search/>
                 <a id="signup_btn" href='/registration'>Welcome, {sessionStorage.getItem("lastAuth")}!</a>
+                <button onClick={this.signOut} id="signout_btn">Sing Out</button>
             </nav>
+
+
+
+        )}else {
+            return(
+                <nav className='navbar'>
+                <img src={logo}/>
+            {headers}
+            <Search/>
+            <a id="signup_btn" href='/registration'>Signup</a>
+        </nav>
             );
         }
     }

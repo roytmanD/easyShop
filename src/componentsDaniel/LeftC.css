@@ -366,3 +366,10 @@ display: flex;
     font-size: 14pt;
     margin-top: 100%;
 }
+
+#signout_btn{
+   position: absolute;
+    margin-left: 90%;
+    margin-top: 2%;
+    height: 25px;
+}

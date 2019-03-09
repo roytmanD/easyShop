@@ -16,7 +16,8 @@ export class ItemsTable extends React.Component{
      this.state = {
          data: this.props.data,
          extended: this.props.extended,
-         size: this.props.size
+         size: this.props.size,
+         incrementable: this.props.incrementable
      }
  }
     logData(){
@@ -34,7 +35,7 @@ export class ItemsTable extends React.Component{
              </div>
          <div id="scrolltable">
                 <table className={this.state.size}>
-                    <TableContents data={this.state.data} size={this.state.size}/>
+                    <TableContents data={this.state.data} size={this.state.size} incrementable={this.state.incrementable}/>
                 </table>
          </div>
          </div>
