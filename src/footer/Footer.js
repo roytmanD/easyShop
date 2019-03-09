@@ -3,6 +3,7 @@ import logo from './logo@2x.png';
 import logo_twi from "./logo-twi.png";
 import logo_fb from "./logo-fb.png";
 import logo_inst from "./logo-inst.png"
+import "./footer.css";
 
 
 export class Footer extends React.Component{
@@ -10,17 +11,19 @@ export class Footer extends React.Component{
     render() {
 
         return(
-            <div id="footer">
-                <div id="footer-logo-container">
+            <span className="footer">
+                <div className="footer-logo-container">
                     <img src={logo}/>
                     <p>EasyShop.Ltd</p>
-                </div>
-                <div id="about-contact-terms-link-container">
+                 </div>
+
+                  <div className="about-contact-terms-link-container">
                     <a href="/about">About us</a>
                     <a href="/contact">Contact</a>
                     <a href="/terms">Terms & Conditions</a>
                 </div>
-                <div id="social-networks-container">
+
+                  <div className="social-networks-container">
                     <span className="link-image-container">
                         <img src={logo_fb}/>
                         <a href="https://www.facebook.com/">Facebook</a>
@@ -33,20 +36,30 @@ export class Footer extends React.Component{
                         <img src={logo_inst}/>
                         <a href="https://www.instagram.com">Instagram</a>
                     </span>
-                </div>
-                <div id="subscription-container">
-                    <span>
-                        <p>Subscribe to our newsletter</p>
-                         <input placeholder="Email address"/>
-                         <button>Ok</button>
-                    </span>
-                </div>
-                <div id="contact-info-container">
-                    <p>Plaut 10, Rehovot</p>
-                    <p>+972052343891</p>
-                    <p>info@easyshop.co.il</p>
-                </div>
-            </div>
+                 </div>
+
+
+                    <div className="subscription-container">
+                        <span>
+                            <p>Subscribe to our newsletter</p>
+                             <input placeholder="Email address"/>
+                             <button>Ok</button>
+                        </span>
+                    </div>
+
+
+                    <div className="contact-info-container">
+                        <p>Plaut 10, Rehovot</p>
+                        <p>+972052343891</p>
+                        <p>info@easyshop.co.il</p>
+                    </div>
+
+
+
+            </span>
         )
     }
 }
+
+
+

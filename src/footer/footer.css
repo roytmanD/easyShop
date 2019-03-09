@@ -1,0 +1,45 @@
+.footer {
+    height: 200px;
+    width: 100%;
+    background-color: #E84C3D;
+    display: flex;
+    flex-wrap: wrap;
+    float: bottom;
+    padding-top: 3%;
+    margin-top: 42em;
+
+
+}
+
+.footer div{
+    margin-left: 3%;
+    margin-top: 1%;
+}
+
+
+
+.about-contact-terms-link-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.social-networks-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.link-image-container img{
+height: 20px;
+width: 20px;
+}
+.link-image-container{
+margin: 0;
+padding: 0;
+}
+
+
+
+
+

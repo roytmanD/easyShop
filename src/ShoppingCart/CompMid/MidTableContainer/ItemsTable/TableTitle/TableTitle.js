@@ -34,8 +34,8 @@ export class TableTitle extends React.Component {
     render() {
         if (this.props.extended) {
             return (
-                <thead className="fixed-table-head">
-                <tr>
+                <thead className="fixed-table-head" >
+                <tr className={this.props.size}>
                     {TABLE_COLUMNS.map((element, index) =>
                         <th key={index}>{element.label}</th>
                     )}
@@ -43,10 +43,10 @@ export class TableTitle extends React.Component {
                 </thead>
             )
         } else {
-            return (<thead className="fixed-table-head" >
+            return (<thead className="fixed-table-head"  >
                 <tr>
                     {TABLE_BASE.map((element, index) =>
-                        <th key={index}>{element.label}</th>
+                        <th className={this.props.size} key={index}>{element.label}</th>
                     )}
                 </tr>
                 </thead>
@@ -57,3 +57,4 @@ export class TableTitle extends React.Component {
     }
 
 }
+

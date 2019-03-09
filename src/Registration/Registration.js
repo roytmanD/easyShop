@@ -1,5 +1,5 @@
 import React from 'react';
-import DataBase from "../../dataBase/DataBase";
+import DataBase from "../dataBase/DataBase";
 import {Redirect} from 'react-router-dom';
 
 

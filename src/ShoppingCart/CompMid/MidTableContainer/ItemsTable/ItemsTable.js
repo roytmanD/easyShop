@@ -1,7 +1,7 @@
 import React from 'react';
-import {TableTitle} from "./TableTitle";
-import {TableContents} from "./TableContents";
-import DataBase from "../dataBase/DataBase";
+import {TableTitle} from "./TableTitle/TableTitle";
+import {TableContents} from "./TableContents/TableContents";
+import DataBase from "../../../../dataBase/DataBase";
 
 const local_data = [
     ['tovar', 'kolvo', 'zena'],
@@ -26,16 +26,20 @@ export class ItemsTable extends React.Component{
 
     render() {
 
+     if(this.state.size !== this.props.size){
+         this.setState({size: this.props.size})
+     }
+
      this.logData();
 
      return(
-         <div>
+         <div className={"store-table-" +this.props.size} id="scrollable">
              <div className="table-title-container">
          <TableTitle extended = {this.state.extended} size={this.state.size}/>
              </div>
-         <div id="scrolltable">
+         <div >
                 <table className={this.state.size}>
-                    <TableContents data={this.state.data} size={this.state.size} incrementable={this.state.incrementable}/>
+                    <TableContents data={this.state.data} size={this.state.size} extended={this.state.extended} incrementable={this.state.incrementable}/>
                 </table>
          </div>
          </div>
@@ -43,6 +47,8 @@ export class ItemsTable extends React.Component{
     }
 
 }
+
+
 
 ItemsTable.defaultProps = {
     data: local_data

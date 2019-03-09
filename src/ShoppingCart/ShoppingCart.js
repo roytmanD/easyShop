@@ -1,12 +1,8 @@
 import React from 'react';
-import './LeftC.css';
-import {CompMidLeft} from "./CompMidLeft";
-import MidTableContainer from "./mid-table-container";
-import {CompMid} from "./comp_mid";
-import {sessionStorage} from "../dataBase/DataBase";
+import '../LeftC.css';
 
-// <CompMidLeft/>
-//                 <MidTableContainer modeEconom={false}/>
+import {sessionStorage} from "../dataBase/DataBase";
+import {CompMid} from "./CompMid/comp_mid";
 
 
  class ShoppingCart extends React.Component{
@@ -24,7 +20,7 @@ import {sessionStorage} from "../dataBase/DataBase";
         return (
 
             <div id="mid-container">
-               <CompMid isAuth={this.state.isAuth}/>
+                <CompMid isAuth={this.state.isAuth}/>
             </div>
 
 

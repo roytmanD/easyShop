@@ -1,9 +1,12 @@
 import React from 'react';
-import {ItemsTable} from "./ItemsTable";
-import store_1 from "./Images/store_1@2x.png";
-import store_2 from "./Images/store_2@2x.png";
-import store_3 from "./Images/store_3@2x.png";
-import DataBase from "../dataBase/DataBase";
+import {ItemsTable} from "./ItemsTable/ItemsTable";
+import store_1 from "../../../Images/store_1@2x.png";
+import store_2 from "../../../Images/store_2@2x.png";
+import store_3 from "../../../Images/store_3@2x.png";
+import DataBase from "../../../dataBase/DataBase";
+import {UserCartContainer} from "./UsersCart/UserCartContainer";
+import {StoreTableContainer} from "./StoreTableContainer/StoreTableContainer";
+import "./MidTableContainer.css";
 
 
 
@@ -66,10 +69,28 @@ constructor(props){
      //  data = currentUserItems;
 
      render() {
+    console.log(this.props.modeToggled);
 
     if(this.state.isAuth !== "AUTH"){
         usersList = vegetarianList;
-        console.log(this.state.isAuth + " fddfdfd");
+    } //else usersList = DataBase.getLastUserList(); //TODO create this function
+
+
+
+                 return(
+                     <div className="mid-table-container">
+                         <UserCartContainer data={usersList}/>
+                         <StoreTableContainer data={usersList} modeToggled={this.props.modeToggled}/>
+                     </div>
+                 );
+
+
+        // }
+
+         /*
+    if(this.state.isAuth !== "AUTH"){
+        usersList = vegetarianList;
+
     }else {
         //usersList = DataBase.getLastUserList(); //TODO create this function
     }
@@ -129,7 +150,10 @@ constructor(props){
              );
          }
 
+
+*/
      }
+
  }
 
 export default MidTableContainer;

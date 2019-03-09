@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import NavigBar from "./componentsMax/navBar/NavBar";
-import ShoppingCart from "./componentsDaniel/ShoppingCart";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Catalogue from "./componentsMax/catalogue/Catalogue";
-import Registration from "./componentsDaniel/Registration/Registration"
-import {Footer} from "./componentsDaniel/footer/Footer";
+import Registration from "./Registration/Registration"
+import {Footer} from "./footer/Footer";
 
 
 
@@ -31,7 +31,8 @@ class App extends Component {
         <div>
           <Switch>
             <Route path="/cart" component ={ShoppingCart}/>
-            <Route path="/catalogue" component ={Catalogue}/>
+            <Route exact path="/" component ={Catalogue}/>
+            <Route exact path="/catalogue" component ={Catalogue}/>
             <Route  path="/registration"  component ={Registration}/>
           </Switch>
         </div>

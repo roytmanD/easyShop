@@ -1,5 +1,5 @@
 import React from 'react';
-import './LeftC.css';
+import '../../../LeftC.css';
 
 let total_sum = 420;
 let saved_sum = 5;
@@ -44,6 +44,7 @@ export class CompMidLeft extends React.Component{
         }else{
             differenceType = "ECONOMY";
         }
+
 
         return (
                 <div id="left-container">
