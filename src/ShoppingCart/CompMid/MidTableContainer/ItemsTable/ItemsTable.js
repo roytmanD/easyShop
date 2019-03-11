@@ -15,6 +15,7 @@ export class ItemsTable extends React.Component{
      super(props);
      this.state = {
          data: this.props.data,
+         storeData: this.props.storeData,
          extended: this.props.extended,
          size: this.props.size,
          incrementable: this.props.incrementable
@@ -30,8 +31,18 @@ export class ItemsTable extends React.Component{
          this.setState({size: this.props.size})
      }
 
-     this.logData();
 
+
+     if(this.state.storeData !== this.props.storeData || this.state.size !== this.props.size){
+         this.setState(
+             {data: this.props.data,
+                 storeData: this.props.storeData,
+                 extended: this.props.extended,
+                 size: this.props.size,
+                 incrementable: this.props.incrementable});
+     }
+
+        this.logData();
      return(
          <div className={"store-table-" +this.props.size} id="scrollable">
              <div className="table-title-container">
@@ -39,7 +50,7 @@ export class ItemsTable extends React.Component{
              </div>
          <div >
                 <table className={this.state.size}>
-                    <TableContents data={this.state.data} size={this.state.size} extended={this.state.extended} incrementable={this.state.incrementable}/>
+                    <TableContents data={this.state.storeData} size={this.state.size} extended={this.state.extended} incrementable={this.state.incrementable}/>
                 </table>
          </div>
          </div>

@@ -64,8 +64,7 @@ let query = JSON.stringify(q);
         let url = BASE_URL +  EASY_SHOP + '/tokens' +"?q="+query  + '&apiKey=' + API_KEY;
         $.ajax({url:url}).then(function (res) {
             if(res.length === 0){
-                //callback(false, 'Wrong email or password')
-                console.log(res);
+
             return false;
             }else{
                //  alert('success! Authorized as ' + res[0].login );
@@ -75,7 +74,6 @@ let query = JSON.stringify(q);
                 sessionStorage.setItem("lastAuth", currentLogin);//TODO костылек??????? несомненно
 
                 return   true;
-
 
             }
 
@@ -93,7 +91,6 @@ let query = JSON.stringify(q);
             if(res.length === 0 ){
                 alert('oops u fucked up again');
             }else{
-          //      console.log(res);
 
 
                   for(let i =0; i< res.length; i++) {
@@ -105,23 +102,85 @@ let query = JSON.stringify(q);
                       }
                   }
 
-               // console.log(res[i].list);
-
-                //return res[0].list;
-                console.log(currentUserItems);
             }
         })
     },
 
-    addList(list) {
+
+    addList(list,name,currentLogin,privatize) {
         let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
         $.ajax({
             url: url,
             data: JSON.stringify({"list": list,
-            'login':currentLogin}),
+                'login':currentLogin,"name":name,'private':privatize}),
             type: "POST",
             contentType: "application/json"
         });
+
+        sessionStorage.setItem("currentList", name);
+    },
+
+    async getCurrentList(){
+
+   let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList")).then((data)=>{
+//TODO catchin respons&network errors for loosers, huh?
+       console.log(data + "vot kak data");
+
+            return data[0].list;
+
+ }).then((response)=>{
+            let currentList = [];
+            for(let i = 0; i <response.length; i++) {
+                currentList.push(response[i]);
+            }
+
+            return currentList;
+        });
+
+        return currentList;
+    },
+
+    getUsersListItemsPricedBy(shop, list){
+        console.log(list);
+
+        let j='{ itemName: { $in: [ ';
+        for (let i = 0; i <list.length ; i++) {
+            if(i===0){
+                j = j.concat(`"${list[i]}"`);
+            }else {
+                j = j.concat(`, "${list[i]}"`);
+            }
+        }
+       j = j.concat("] } }");
+
+        console.log(j + " eto je jiiii");
+        let js = JSON.stringify(j);
+        console.log( js);
+      //  let q =  { itemName: { $in: [  "bread", "rice" ,"bacon"] } };
+
+        //let q = {itemName: "rice"};
+        let q = j;
+        let query = JSON.stringify(q);
+        let url = BASE_URL + EASY_SHOP +"/"+shop+"?q="+ q+"&apiKey="+API_KEY;
+
+        console.log(url);
+
+
+        // $.ajax({url:url}).then(function (res) {
+        //    console.log(res + "vot i price iz magazina");
+        // }
+
+        let res;
+        res = fetch(url).then((response)=> response.json());
+        console.log(res);
+
+        let shopList = res.then((data)=>{
+            console.log(data);
+          return data;
+        })
+
+        console.log(shopList);
+        return shopList;
     },
 
     async getList() {
@@ -130,9 +189,7 @@ let query = JSON.stringify(q);
            const response=await fetch(url);
            if(response.ok){
                const jsonResponse= await response.json();
-               console.log(jsonResponse);
                Resp=jsonResponse;
-               console.log(Resp);
                return jsonResponse;
            }
            throw new Error('Request failed!')
@@ -146,11 +203,9 @@ let query = JSON.stringify(q);
     },
 
     removeList(doc){ //TODO yet deletes too much..
-        console.log(doc);
         let query={"list":doc.json};
         let q='?q='+query;
         let url=BASE_URL+GET_shopLists_Url+q+'&apiKey='+API_KEY;
-        console.log(url);
         $.ajax({
             url: url,
             data:JSON.stringify([]),
@@ -159,12 +214,21 @@ let query = JSON.stringify(q);
         }).catch((e)=>{console.log(e)})
 
     },
+    getShopListByName(name) {
+        let q={"name":name};
+        let query=JSON.stringify(q);
+        let res;
+        let url = BASE_URL + GET_shopLists_Url +"?q="+query+"&apiKey=" + API_KEY;
+        res = fetch(url).then((response) => response.json());
+        console.log(res + " vot eto rezik s fetcha maxa")
+        return res;
+    },
+
 
     getShopList() {
         let res;
         let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
         res = fetch(url).then((response) => response.json());
-        console.log(res);
         return res;
     }
 

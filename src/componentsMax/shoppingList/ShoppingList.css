@@ -16,12 +16,22 @@
 }
 
 .inputContainer{
-   /* overflow-x: scroll;
-    width: 900px;
-    height: 30vh;
-    position: relative;
-    left: 30%;*/
+    /* overflow-x: scroll;
+     width: 900px;
+     height: 30vh;
+     position: relative;
+     left: 30%;*/
     display: flex;
-overflow-x: scroll;
+    overflow-x: scroll;
 }
 
+input{
+    color:white ;
+    background-color: #E84C3D;
+    width: fit-content;
+}
+
+.private{
+    font-weight: bold;
+    font-style: italic;
+}

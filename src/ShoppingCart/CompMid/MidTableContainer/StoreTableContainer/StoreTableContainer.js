@@ -10,18 +10,28 @@ export class StoreTableContainer extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            modeToggled: this.props.modeToggled
+            modeToggled: this.props.modeToggled,
+            chippestStoreData: this.props.chippestStoreData,
+            shufersalData : this.props.shufersalData,
+            tivTaamData: this.props.tivTaamData,
+            ramiLeviData: this.props.ramiLeviData
         }
     }
     render() {
-        if(this.props.modeToggled != this.state.modeToggled){
-            this.setState({modeToggled: this.props.modeToggled})
-        }
 
-        if(this.state.modeToggled !== this.props.modeToggled){
-            this.setState({modeToggled: this.props.modeToggled});
-        }
 
+        if(this.props.modeToggled !== this.state.modeToggled ||
+            this.props.shufersalData !== this.state.shufersalData ||
+            this.props.tivTaamData !== this.state.tivTaamData ||
+            this.props.ramiLeviData !== this.state.ramiLeviData ||
+            this.props.chippestStoreData != this.state.chippestStoreData
+        ){
+            this.setState({modeToggled: this.props.modeToggled,
+                chippestStoreData:this.props.chippestStoreData,
+            shufersalData: this.props.shufersalData,
+            tivTaamData: this.props.tivTaamData,
+            ramiLeviData: this.props.ramiLeviData});
+        }
         switch (this.state.modeToggled) {
             case "optimal":
                 return(
@@ -32,10 +42,12 @@ export class StoreTableContainer extends React.Component{
                                 <img src={store_1}/>
                             </div>
                         </span>
-                        <ItemsTable  data={this.props.data} extended={true} size="full" incrementable={false}/>
+                        <ItemsTable  storeData={this.state.shufersalData} extended={true} size="full" incrementable={false}/>
                     </div>
 
                 );
+
+                //^^^^ pass chipestStoreList to single ItemTable element
                 break;
             case "econom":
                 return(
@@ -53,11 +65,11 @@ export class StoreTableContainer extends React.Component{
                                 <img src={store_3}/>
                             </div>
                         </span>
-                        <ItemsTable data={this.props.data} extended={true} size="small" incrementable={false}/>
-                        <ItemsTable data={this.props.data} extended={true} size="small" incrementable={false}/>
-                        <ItemsTable data={this.props.data} extended={true} size="small" incrementable={false}/>
+                        <ItemsTable storeData={this.state.shufersalData} extended={true} size="small" incrementable={false}/>
+                        <ItemsTable storeData={this.state.tivTaamData} extended={true} size="small" incrementable={false}/>
+                        <ItemsTable storeData={this.state.ramiLeviData} extended={true} size="small" incrementable={false}/>
                     </div>
-                );
+                ); //pass each stores list to each of the three itemsTables
                 break;
         }
 

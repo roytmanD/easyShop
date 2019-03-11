@@ -26,17 +26,20 @@ export class TableContents extends React.Component{
     }
 
     render() {
-         if(this.state.data !== undefined){
-             data = this.state.data;
-         }
+        if(this.state.data !== this.props.data){
+            this.setState({data:this.props.data})
+        }
 
+        //TODO gottcha catch shit about empty data if it comes
+
+        console.log(this.state.data);
         return (
             <tbody>
-            { data.map((element, index) =>
+            { this.state.data.map((element, index) =>
                 <tr key={index}>
-                        <td key={index}>{element}</td>
+                    {   this.state.extended ?   <td key={index}>{element[0]}</td> : <td key={index}>{element}</td>}
                     {this.state.incrementable ? <UserCartTableTd/> : <td className={this.state.size}>1</td>}
-                    {this.state.extended ? <PriceTd/> : ""}
+                    {this.state.extended ? <td key={index}>{element[2]}</td> : ""}
                 </tr>
             )}
             </tbody>
@@ -78,7 +81,7 @@ export class PriceTd extends React.Component{
 
     render() {
         return (
-            <td  className="price-td">50$</td>
+            <td  className="price-td"></td>
         );
     }
 }

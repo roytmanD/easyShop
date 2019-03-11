@@ -9,33 +9,14 @@ import {StoreTableContainer} from "./StoreTableContainer/StoreTableContainer";
 import "./MidTableContainer.css";
 
 
-
-const data = [
-    ['000', 111, 111],
-    ['000', 311, 111],
-    ['000', 111, 111],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-    ['dsf', 123,222],
-]
+let chippestStoreData = [];
+let shufersalData = [];
+let ramiLeviData = [];
+let tivTaamData = [] ;
 
 
-//TODO 4200
-let usersList = [
-    ['beer', 6],
-    ['weed', 30],
-    ['burritto', 1],
-    ['bueno', 4],
-    ['chips', 2],
-    ['humus', 3]
-]
+
+
 
 let vegetarianList = [
     ['broccoli', '1 piece'],
@@ -45,15 +26,8 @@ let vegetarianList = [
     ['potatoes', '1 kg']
 ]
 
-let shabbatList = [
-    ['hala', '1 piece'],
-    ['kedush vine', '1 bottle'],
-    ['humus', '1 pack'],
-    ['meat', '1 kg'],
-    ['rice', '1 pack']
-];
 
-let lists = [vegetarianList, shabbatList];
+let lists ;//LIST frim db // TODO
 
 //TODO mid table container will pass incrementable propperty
  class MidTableContainer extends React.Component {
@@ -61,26 +35,122 @@ constructor(props){
     super(props);
     this.state = {
         isAuth: this.props.isAuth,
-        modeToggled: this.props.modeToggled
+        modeToggled: this.props.modeToggled,
+        data: [],
+        shufersalData:[],
+        ramiLeviData:[],
+        tivTaamData: [],
+        chippestStoreData:[]
     }
 
 
 }
-     //  data = currentUserItems;
+     // openPromiceFromEachStoreWrapper(shopData, shopName){
+     //     let tempData = [];
+     //
+     //     shopData.then((data)=> {
+     //         for (let i = 0; i < data.length; i++) {
+     //         tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+     //
+     //         }
+     //
+     //         // console.log(this.state.storeData.shufersalData);
+     //         // this.setState({shufersalData: });
+     //
+     //         switch (shopName) {
+     //             case "shufersal":
+     //                 this.setState({shufersalData:tempData});
+     //                 break;
+     //             case "ramiLevi":
+     //                 this.setState({ramiLeviData:tempData});
+     //                 break;
+     //             case "tivTaam":
+     //                 this.setState({tivTaamData:tempData});
+     //                 break;
+     //         }
+     //     })
+     // }
+     getDataFromStores(list){
+
+
+         shufersalData = DataBase.getUsersListItemsPricedBy('shufersal1', list); //assign shufersalDAta to promis with array
+       // this.openPromiceFromEachStoreWrapper(shufersalData, "shufersal");
+
+         ramiLeviData = DataBase.getUsersListItemsPricedBy('ramiLevi', list);
+
+         tivTaamData = DataBase.getUsersListItemsPricedBy("tivTaam", list);
+
+
+         //shuf
+         shufersalData.then((data)=>{
+             let tempData = [];
+
+
+             for (let i = 0; i <data.length ; i++) {
+                 tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+             }
+             this.setState({shufersalData:tempData});
+         })
+
+         //tiv
+         tivTaamData.then((data)=>{
+             let tempData = [];
+
+             for (let i = 0; i <data.length ; i++) {
+                 tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+             }
+             this.setState({tivTaamData:tempData});
+         })
+         //rami
+         ramiLeviData.then((data)=>{
+             let tempData = [];
+
+             for (let i = 0; i <data.length ; i++) {
+                 tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+             }
+             this.setState({ramiLeviData:tempData});
+         })
+
+
+
+     }
 
      render() {
-    console.log(this.props.modeToggled);
 
-    if(this.state.isAuth !== "AUTH"){
-        usersList = vegetarianList;
-    } //else usersList = DataBase.getLastUserList(); //TODO create this function
+    // if(this.state.isAuth !== "AUTH"){
+    //     usersList = vegetarianList;
+    // } //else usersList = DataBase.getLastUserList(); //TODO create this function
 
+         if(this.state.data.length === 0) {
+             let currentList = DataBase.getCurrentList();
+             currentList.then((data) => {
+                 this.setState({data: data});
+             })
+         }
+
+
+
+if(this.state.shufersalData.length===0) {
+    this.getDataFromStores(this.state.data); //TODO user list to parametrs
+}
+
+         if(this.state.tivTaamData.length===0) {
+             this.getDataFromStores(this.state.data); //TODO user list to parametrs
+         }
+
+         if(this.state.ramiLeviData.length===0) {
+             this.getDataFromStores(this.state.data); //TODO user list to parametrs
+         }
 
 
                  return(
                      <div className="mid-table-container">
-                         <UserCartContainer data={usersList}/>
-                         <StoreTableContainer data={usersList} modeToggled={this.props.modeToggled}/>
+                         <UserCartContainer data={this.state.data}/>
+                         <StoreTableContainer chippestStoreData={[]}
+                                              shufersalData={this.state.shufersalData}
+                                              tivTaamData = {this.state.tivTaamData}
+                                              ramiLeviData = {this.state.ramiLeviData}
+                                              modeToggled={this.props.modeToggled}/>
                      </div>
                  );
 
