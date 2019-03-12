@@ -60,11 +60,11 @@ const DataBase=  {
         let q = {"login": login,
             "password" : password};
 let query = JSON.stringify(q);
-      //  let data = await fetch(url);
+
         let url = BASE_URL +  EASY_SHOP + '/tokens' +"?q="+query  + '&apiKey=' + API_KEY;
         $.ajax({url:url}).then(function (res) {
             if(res.length === 0){
-
+                //TODO SO WHAT?
             return false;
             }else{
                //  alert('success! Authorized as ' + res[0].login );
@@ -121,11 +121,12 @@ let query = JSON.stringify(q);
     },
 
     async getCurrentList(){
+        console.log(sessionStorage.getItem("currentList"));
 
-   let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList")).then((data)=>{
+   let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList"));
+   console.log(currentList); //TODO ЕСТЬ КОНТАКТ
+      let list = currentList.then((data)=>{
 //TODO catchin respons&network errors for loosers, huh?
-       console.log(data + "vot kak data");
-
             return data[0].list;
 
  }).then((response)=>{
@@ -137,7 +138,9 @@ let query = JSON.stringify(q);
             return currentList;
         });
 
-        return currentList;
+      console.log(list); //TODO toje OK
+
+        return list;
     },
 
     getUsersListItemsPricedBy(shop, list){
@@ -156,19 +159,12 @@ let query = JSON.stringify(q);
         console.log(j + " eto je jiiii");
         let js = JSON.stringify(j);
         console.log( js);
-      //  let q =  { itemName: { $in: [  "bread", "rice" ,"bacon"] } };
-
-        //let q = {itemName: "rice"};
         let q = j;
         let query = JSON.stringify(q);
         let url = BASE_URL + EASY_SHOP +"/"+shop+"?q="+ q+"&apiKey="+API_KEY;
 
         console.log(url);
 
-
-        // $.ajax({url:url}).then(function (res) {
-        //    console.log(res + "vot i price iz magazina");
-        // }
 
         let res;
         res = fetch(url).then((response)=> response.json());
@@ -220,7 +216,7 @@ let query = JSON.stringify(q);
         let res;
         let url = BASE_URL + GET_shopLists_Url +"?q="+query+"&apiKey=" + API_KEY;
         res = fetch(url).then((response) => response.json());
-        console.log(res + " vot eto rezik s fetcha maxa")
+        console.log(res );
         return res;
     },
 

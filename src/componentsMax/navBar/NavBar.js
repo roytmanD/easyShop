@@ -75,7 +75,6 @@ class NavigBar extends React.Component {
 
             <nav className='navbar'>
                 <img src={logo}/>
-                <button onClick={this.handleAuthChange}>knopych</button>
                 {headers}
                 <Search/>
                 <a id="signup_btn" href='/registration'>Welcome, {sessionStorage.getItem("lastAuth")}!</a>

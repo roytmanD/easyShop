@@ -33,18 +33,24 @@ export class TableContents extends React.Component{
         //TODO gottcha catch shit about empty data if it comes
 
         console.log(this.state.data);
+        if(this.state.data === undefined){
+            return(
+                <div>parasha</div>
+            );
+        }else{
         return (
             <tbody>
             { this.state.data.map((element, index) =>
                 <tr key={index}>
-                    {   this.state.extended ?   <td key={index}>{element[0]}</td> : <td key={index}>{element}</td>}
-                    {this.state.incrementable ? <UserCartTableTd/> : <td className={this.state.size}>1</td>}
-                    {this.state.extended ? <td key={index}>{element[2]}</td> : ""}
+                    {this.state.extended ?   <td key={index}>{element[0]}</td> : <td key={index}>{element}</td>}
+                    {this.state.incrementable ? <UserCartTableTd/> : <td className={this.state.size}>{element[2]}</td>}
+                    {this.state.extended ? <td key={index}>{element[1]}</td> : ""}
                 </tr>
             )}
             </tbody>
         );
     }
+        }
 
 }
 

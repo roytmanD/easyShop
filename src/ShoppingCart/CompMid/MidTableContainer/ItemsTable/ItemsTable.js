@@ -3,11 +3,7 @@ import {TableTitle} from "./TableTitle/TableTitle";
 import {TableContents} from "./TableContents/TableContents";
 import DataBase from "../../../../dataBase/DataBase";
 
-const local_data = [
-    ['tovar', 'kolvo', 'zena'],
-    ['tovar', 'kolvo', 'zena'],
-    ['tovar', 'kolvo', 'zena']
-]
+
 
 export class ItemsTable extends React.Component{
 
@@ -21,9 +17,7 @@ export class ItemsTable extends React.Component{
          incrementable: this.props.incrementable
      }
  }
-    logData(){
-        console.log(this.state.data);
-    }
+
 
     render() {
 
@@ -32,37 +26,41 @@ export class ItemsTable extends React.Component{
      }
 
 
+     //
+     // if(this.state.storeData !== this.props.storeData || this.state.size !== this.props.size){
+     //     console.log(this.state.storeData);
+     //     this.setState(
+     //         {data: this.props.data,
+     //             storeData: this.props.storeData,
+     //             extended: this.props.extended,
+     //             size: this.props.size,
+     //             incrementable: this.props.incrementable});
+     // }
 
-     if(this.state.storeData !== this.props.storeData || this.state.size !== this.props.size){
-         this.setState(
-             {data: this.props.data,
-                 storeData: this.props.storeData,
-                 extended: this.props.extended,
-                 size: this.props.size,
-                 incrementable: this.props.incrementable});
-     }
-
-        this.logData();
-     return(
-         <div className={"store-table-" +this.props.size} id="scrollable">
-             <div className="table-title-container">
-         <TableTitle extended = {this.state.extended} size={this.state.size}/>
+     console.log( this.state.storeData);
+      console.log(this.props.storeData);
+     if(this.props.storeData === undefined){
+      return (   <div>huy</div>);
+     }else {
+         return (
+             <div className={"store-table-" + this.props.size} id="scrollable">
+                 <div className="table-title-container">
+                     <TableTitle extended={this.state.extended} size={this.state.size}/>
+                 </div>
+                 <div>
+                     <table className={this.state.size}>
+                         <TableContents data={this.props.storeData} size={this.state.size}
+                                        extended={this.state.extended} incrementable={this.state.incrementable}/>
+                     </table>
+                 </div>
              </div>
-         <div >
-                <table className={this.state.size}>
-                    <TableContents data={this.state.storeData} size={this.state.size} extended={this.state.extended} incrementable={this.state.incrementable}/>
-                </table>
-         </div>
-         </div>
-        );
+         );
+     }
     }
 
 }
 
 
 
-ItemsTable.defaultProps = {
-    data: local_data
-}
 
 //  <TableContents data={this.props.data}/>

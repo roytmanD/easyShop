@@ -19,11 +19,11 @@ let tivTaamData = [] ;
 
 
 let vegetarianList = [
-    ['broccoli', '1 piece'],
-    ['soy beans' , '1 pack'],
-    ['tofu', '1 pack'],
-    ['rice', '1 pack'],
-    ['potatoes', '1 kg']
+    ['broccoli'],
+    ['soy beans'],
+    ['tofu'],
+    ['rice'],
+    ['potatoes']
 ]
 
 
@@ -36,194 +36,143 @@ constructor(props){
     this.state = {
         isAuth: this.props.isAuth,
         modeToggled: this.props.modeToggled,
-        data: [],
+        data:[],
         shufersalData:[],
         ramiLeviData:[],
         tivTaamData: [],
         chippestStoreData:[]
     }
-
-
+this.getDataFromStores = this.getDataFromStores.bind(this);
 }
-     // openPromiceFromEachStoreWrapper(shopData, shopName){
-     //     let tempData = [];
-     //
-     //     shopData.then((data)=> {
-     //         for (let i = 0; i < data.length; i++) {
-     //         tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
-     //
-     //         }
-     //
-     //         // console.log(this.state.storeData.shufersalData);
-     //         // this.setState({shufersalData: });
-     //
-     //         switch (shopName) {
-     //             case "shufersal":
-     //                 this.setState({shufersalData:tempData});
-     //                 break;
-     //             case "ramiLevi":
-     //                 this.setState({ramiLeviData:tempData});
-     //                 break;
-     //             case "tivTaam":
-     //                 this.setState({tivTaamData:tempData});
-     //                 break;
-     //         }
-     //     })
-     // }
-     getDataFromStores(list){
 
+     getDataFromStores(list) {
 
+console.log(list);//TODO TOJe pusto, idem vyshe
          shufersalData = DataBase.getUsersListItemsPricedBy('shufersal1', list); //assign shufersalDAta to promis with array
-       // this.openPromiceFromEachStoreWrapper(shufersalData, "shufersal");
+         // this.openPromiceFromEachStoreWrapper(shufersalData, "shufersal");
 
          ramiLeviData = DataBase.getUsersListItemsPricedBy('ramiLevi', list);
 
          tivTaamData = DataBase.getUsersListItemsPricedBy("tivTaam", list);
 
-
          //shuf
-         shufersalData.then((data)=>{
+         shufersalData.then((data) => {
              let tempData = [];
+            let listPrice =0;
 
-
-             for (let i = 0; i <data.length ; i++) {
+             for (let i = 0; i < data.length; i++) {
                  tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+
+                 listPrice += data[i].price;
              }
-             this.setState({shufersalData:tempData});
+
+             console.log(tempData);
+             if(this.state.shufersalData.length ===0) {
+                 this.setState({
+                     shufersalData: tempData,
+                     chippestStoreData: {name: 'shufersal', minSum: listPrice, chippestList: tempData}
+                 });
+             }
          })
+
 
          //tiv
-         tivTaamData.then((data)=>{
+         tivTaamData.then((data) => {
              let tempData = [];
+             let listPrice =0;
 
-             for (let i = 0; i <data.length ; i++) {
+             console.log(this.state.chippestStoreData);
+             for (let i = 0; i < data.length; i++) {
                  tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+
+                 listPrice += data[i].price;
              }
-             this.setState({tivTaamData:tempData});
+
+             if (this.state.tivTaamData.length === 0) {
+                 if (listPrice < this.state.chippestStoreData.minSum) {
+                     this.setState(
+                         {
+                             tivTaamData: tempData, chippestStoreData:
+                                 {name: 'tivTaam', minSum: listPrice, chippestList: tempData}
+                         });
+                 } else {
+                     this.setState({tivTaamData: tempData});
+                 }
+             }
+
          })
          //rami
-         ramiLeviData.then((data)=>{
+         ramiLeviData.then((data) => {
              let tempData = [];
-
-             for (let i = 0; i <data.length ; i++) {
+             let listPrice = 0;
+console.log("если моя теория верна то тут мы не окажемся")
+             for (let i = 0; i < data.length; i++) {
                  tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+
+                 listPrice+=data[i].price;
              }
-             this.setState({ramiLeviData:tempData});
+             if(this.state.ramiLeviData.length === 0) {
+                 if (listPrice < this.state.chippestStoreData.minSum) {
+                     this.setState({
+                         ramiLeviData: tempData, chippestStoreData:
+                             {name: 'ramiLevi', minSum: listPrice, chippestList: tempData}
+                     });
+                 }
+                 this.setState({ramiLeviData: tempData});
+             }
          })
 
 
 
      }
 
+
+     countListPriceInStore(storeData){
+    let sumPrice = 0;
+         for (let i = 0; i < storeData.length; i++) {
+             sumPrice += storeData[i].price;
+         }
+
+         return sumPrice;
+     }
      render() {
 
-    // if(this.state.isAuth !== "AUTH"){
-    //     usersList = vegetarianList;
-    // } //else usersList = DataBase.getLastUserList(); //TODO create this function
 
-         if(this.state.data.length === 0) {
+    console.log(this.state.data);
+    console.log(this.state.isAuth);
+        if(this.state.isAuth !== 'AUTH'){
+            this.setState({data: vegetarianList});
+        }else if (this.state.isAuth === 'AUTH' && this.state.data.length === 0) {
              let currentList = DataBase.getCurrentList();
-             currentList.then((data) => {
+            currentList.then((data) => {
                  this.setState({data: data});
              })
          }
 
 
+//
 
-if(this.state.shufersalData.length===0) {
-    this.getDataFromStores(this.state.data); //TODO user list to parametrs
-}
 
-         if(this.state.tivTaamData.length===0) {
+         if (this.state.ramiLeviData.length === 0 ||
+             this.state.shufersalData.length === 0||
+             this.state.tivTaamData === 0) {
+
              this.getDataFromStores(this.state.data); //TODO user list to parametrs
          }
 
-         if(this.state.ramiLeviData.length===0) {
-             this.getDataFromStores(this.state.data); //TODO user list to parametrs
-         }
+         return (
+             <div className="mid-table-container">
+                 <UserCartContainer data={this.state.data}/>
+                 <StoreTableContainer chippestStoreData={this.state.chippestStoreData}
+                                      shufersalData={this.state.shufersalData}
+                                      tivTaamData={this.state.tivTaamData}
+                                      ramiLeviData={this.state.ramiLeviData}
+                                      modeToggled={this.props.modeToggled}/>
+             </div>
+         );
 
 
-                 return(
-                     <div className="mid-table-container">
-                         <UserCartContainer data={this.state.data}/>
-                         <StoreTableContainer chippestStoreData={[]}
-                                              shufersalData={this.state.shufersalData}
-                                              tivTaamData = {this.state.tivTaamData}
-                                              ramiLeviData = {this.state.ramiLeviData}
-                                              modeToggled={this.props.modeToggled}/>
-                     </div>
-                 );
-
-
-        // }
-
-         /*
-    if(this.state.isAuth !== "AUTH"){
-        usersList = vegetarianList;
-
-    }else {
-        //usersList = DataBase.getLastUserList(); //TODO create this function
-    }
-
-         if (this.props.modeToggled === 'econom') {
-             return (
-
-                 <div id='mid-table-container'>
-                     <div id="cart-table-container">
-                         <div id="cart-table-header">My items</div>
-                         <ItemsTable data={usersList} extended={false} size="full" incrementable={true}/>
-                     </div>
-                     <div id='stores-table-container'>
-                         <div id="store-logo-container">
-                             <div className="store-logo-container">
-                                 <img src={store_1}/>
-                             </div>
-
-                             <div className="store-logo-container" id="green">
-                                 <img src={store_2}/>
-                             </div>
-
-                             <div className="store-logo-container">
-                                 <img src={store_3}/>
-                             </div>
-                         </div>
-                         <ItemsTable data={data} extended={true} size="small" incrementable={false}/>
-                         <ItemsTable data={data} extended={true} size="small" incrementable={false}/>
-                         <ItemsTable data={data} extended={true} size="small" incrementable={false}/>
-                     </div>
-
-                     <button id="burdilio_btn">
-                         SHARE <strong>YOUR LIST</strong>
-                     </button>
-                 </div>
-             );
-         } else if (this.props.modeToggled === 'optimal') {
-             return (
-              <div id='mid-table-container'>
-                  <div id="cart-table-header">My items</div>
-                  <ItemsTable data={usersList} extended={false} size="medium" incrementable={true}/>
-                  <div id='stores-table-container'>
-                      <div id="store-logo-container">
-                          <div id="chippest-store" className="store-logo-container">
-                              The lowest price for this list is in:
-                              <img src={store_1}/>
-                          </div>
-                      </div>
-                      <ItemsTable data={data} extended={true} size="full" incrementable={false}/>
-              </div>
-              </div>
-             );
-
-         }else {
-             return(
-                 <div>hahahah</div>
-             );
-         }
-
-
-*/
      }
-
  }
 
 export default MidTableContainer;

@@ -32,24 +32,42 @@ export class StoreTableContainer extends React.Component{
             tivTaamData: this.props.tivTaamData,
             ramiLeviData: this.props.ramiLeviData});
         }
+
+        console.log(this.state.chippestStoreData);//TODO toje pustaya huynya
+        console.log(this.props.chippestStoreData);// toje
+        let img;
+
+        switch (this.state.chippestStoreData.name) {
+            case "shufersal":
+                img = store_1;
+                break;
+            case "tivTaam":
+                img = store_2;
+                break;
+            case "ramiLevi":
+                img = store_3;
+        }
+
         switch (this.state.modeToggled) {
             case "optimal":
+
+                console.log(this.state.chippestStoreData.chippestList); //TODO на этом этапе пустая хуйня
                 return(
 
                     <div id="stores-table-container">
                         <span className="stores-logo-container">
                             <div className="store-logo-container">
-                                <img src={store_1}/>
+                                <img src={img}/>
                             </div>
                         </span>
-                        <ItemsTable  storeData={this.state.shufersalData} extended={true} size="full" incrementable={false}/>
+                        <ItemsTable  storeData={this.state.chippestStoreData.chippestList} extended={true} size="full" incrementable={false}/>
                     </div>
 
                 );
 
-                //^^^^ pass chipestStoreList to single ItemTable element
                 break;
             case "econom":
+                console.log(this.state.chippestStoreData);
                 return(
                     <div id='stores-table-container'>
                         <span className="stores-logo-container">
@@ -69,7 +87,7 @@ export class StoreTableContainer extends React.Component{
                         <ItemsTable storeData={this.state.tivTaamData} extended={true} size="small" incrementable={false}/>
                         <ItemsTable storeData={this.state.ramiLeviData} extended={true} size="small" incrementable={false}/>
                     </div>
-                ); //pass each stores list to each of the three itemsTables
+                );
                 break;
         }
 
