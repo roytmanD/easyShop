@@ -33,8 +33,7 @@ export class StoreTableContainer extends React.Component{
             ramiLeviData: this.props.ramiLeviData});
         }
 
-        console.log(this.state.chippestStoreData);//TODO toje pustaya huynya
-        console.log(this.props.chippestStoreData);// toje
+
         let img;
 
         switch (this.state.chippestStoreData.name) {
@@ -51,7 +50,6 @@ export class StoreTableContainer extends React.Component{
         switch (this.state.modeToggled) {
             case "optimal":
 
-                console.log(this.state.chippestStoreData.chippestList); //TODO на этом этапе пустая хуйня
                 return(
 
                     <div id="stores-table-container">
@@ -67,7 +65,6 @@ export class StoreTableContainer extends React.Component{
 
                 break;
             case "econom":
-                console.log(this.state.chippestStoreData);
                 return(
                     <div id='stores-table-container'>
                         <span className="stores-logo-container">

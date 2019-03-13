@@ -133,49 +133,46 @@ let query = JSON.stringify(q);
             let currentList = [];
             for(let i = 0; i <response.length; i++) {
                 currentList.push(response[i]);
+                console.log(currentList);
+                currentList.sort();
+                console.log(currentList);
             }
 
             return currentList;
         });
 
-      console.log(list); //TODO toje OK
 
         return list;
     },
 
     getUsersListItemsPricedBy(shop, list){
-        console.log(list);
 
-        let j='{ itemName: { $in: [ ';
+
+        let q='{ itemName: { $in: [ ';
         for (let i = 0; i <list.length ; i++) {
             if(i===0){
-                j = j.concat(`"${list[i]}"`);
+                q = q.concat(`"${list[i]}"`);
             }else {
-                j = j.concat(`, "${list[i]}"`);
+                q = q.concat(`, "${list[i]}"`);
             }
         }
-       j = j.concat("] } }");
+       q = q.concat("] } }");
 
-        console.log(j + " eto je jiiii");
-        let js = JSON.stringify(j);
-        console.log( js);
-        let q = j;
-        let query = JSON.stringify(q);
-        let url = BASE_URL + EASY_SHOP +"/"+shop+"?q="+ q+"&apiKey="+API_KEY;
 
-        console.log(url);
+     //   let query = JSON.stringify(q);
+        let s = {"itemName" : 1};
+        let sort = JSON.stringify(s);
+        let url = BASE_URL + EASY_SHOP +"/"+shop+"?q="+ q +'&s='+ sort +"&apiKey="+API_KEY;
+
 
 
         let res;
         res = fetch(url).then((response)=> response.json());
-        console.log(res);
 
         let shopList = res.then((data)=>{
-            console.log(data);
           return data;
         })
 
-        console.log(shopList);
         return shopList;
     },
 
@@ -212,12 +209,14 @@ let query = JSON.stringify(q);
     },
     getShopListByName(name) {
         let q={"name":name};
+
         let query=JSON.stringify(q);
         let res;
-        let url = BASE_URL + GET_shopLists_Url +"?q="+query+"&apiKey=" + API_KEY;
+        let url = BASE_URL + GET_shopLists_Url +"?q="+query +"&apiKey=" + API_KEY;//todo
         res = fetch(url).then((response) => response.json());
-        console.log(res );
         return res;
+
+        //TODO : try request + &sort= but how to sort not by alue but in list inced json via adding S param
     },
 
 
