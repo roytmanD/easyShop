@@ -1,21 +1,15 @@
 import React from 'react';
-import {ItemsTable} from "./ItemsTable/ItemsTable";
-import store_1 from "../../../Images/store_1@2x.png";
-import store_2 from "../../../Images/store_2@2x.png";
-import store_3 from "../../../Images/store_3@2x.png";
 import DataBase from "../../../dataBase/DataBase";
 import {UserCartContainer} from "./UsersCart/UserCartContainer";
 import {StoreTableContainer} from "./StoreTableContainer/StoreTableContainer";
 import "./MidTableContainer.css";
 
-
-let chippestStoreData = [];
 let shufersalData = [];
 let ramiLeviData = [];
 let tivTaamData = [] ;
 
 
-
+let filteredStoreLists = [[],[],[]];
 
 
 let vegetarianList = [
@@ -36,214 +30,165 @@ constructor(props){
     this.state = {
         isAuth: this.props.isAuth,
         modeToggled: this.props.modeToggled,
-        data:[],
-        shufersalData:[],
-        ramiLeviData:[],
+        data: [],
+        shufersalData: [],
+        ramiLeviData: [],
         tivTaamData: [],
-        chippestStoreData:[]
+        chippestStoreData: false
     }
+
 this.getDataFromStores = this.getDataFromStores.bind(this);
 }
 
      getDataFromStores(list) {
 
-
-         shufersalData = DataBase.getUsersListItemsPricedBy('shufersal1', list); //assign shufersalDAta to promis with array
+         shufersalData = DataBase.getUsersListItemsPricedBy('shufersal', list); //assign shufersalDAta to promis with array
 
          ramiLeviData = DataBase.getUsersListItemsPricedBy('ramiLevi', list);
 
          tivTaamData = DataBase.getUsersListItemsPricedBy("tivTaam", list);
-//
-       //  let economList = list;
 
-         //shuf
-         shufersalData.then((data) => {
-             let tempData = [];
-            let listPrice =0;
-//console.log(economList);
-             for (let i = 0; i < data.length; i++) {
-                 tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
-                // economList.push({item:data[i], store: 'shufersal'});
-
-                 listPrice += data[i].price;
-
-                 // for (let j = 0; j < list.length; j++) {
-                 //     if (data[i].itemName === list[j]{
-                 //         economList.push(({item:data[i], store: 'shufersal'}));
-                 //     }
-                 // }
+          let dataFromStores = [Promise.resolve(shufersalData),Promise.resolve(ramiLeviData),Promise.resolve(tivTaamData)];
 
 
 
+         let whenResolve = Promise.all(dataFromStores);
+
+         whenResolve.then((dataArray)=>{
+             let shufersalData = dataArray[0];
+             let tivTaamData = dataArray[1];
+             let ramiLeviData = dataArray[2];
 
 
+         //ok lets think of algorithm
+             //what result do we need?
+             //1) we need lists for each store with only those of userLists items6 which are cheaper in them
+             //2)we need the item list of which lists prices sum is the least
+             //thats basicaly.
+             //now deeply:
+             //1)we take list of items which user whant from DB;
+             //2) we compare it's length to each of the store lists length to throw away those which shorter ( we dont need to show incomplite list in optimalMode)
+             //3)
+
+             //1)list
+             //2)
+             let potentialOptimalLists = dataArray.filter(storeData =>{
+                 return storeData.list.length === list.length
+             });
+             console.log(potentialOptimalLists); //ok
+
+
+            let listSums = [0,0,0];
+
+let cheapestUnicItems = [];
+             for (let i = 0; i < list.length; i++) {
+
+               let  item0 =potentialOptimalLists[0].list[i];
+                 let  item1 =potentialOptimalLists[1].list[i];
+                 let  item2 =potentialOptimalLists[2].list[i];
+
+                 listSums[0] += item0.price;
+                 listSums[1] += item1.price;
+                 listSums[2] += item2.price;
+
+
+                 //creating th cheapest list
+                 let cheapestItem = item0.price > item1.price ? item1.price < item2.price ? [item1, 'tivTaam'] : [item2, 'ramiLevi'] : item0.price < item2.price ? [item0, 'shufersal'] : [item2, 'ramiLevi'];
+
+                    cheapestUnicItems.push(cheapestItem);
              }
 
-          //   console.log(economList);
+             //here, before setting state, i guess its a good place to calculate econom mode stores lists. here we go!
 
-             if(this.state.shufersalData.length ===0 && data.length === list.length) { //second condition is for adding to chippsest store table store data with incomplite list
-                 this.setState({
-                     shufersalData: tempData,
-                     chippestStoreData: {name: 'shufersal', minSum: listPrice, chippestList: tempData}
-                 });
-             }else{
-                 this.setState({
-                     shufersalData :tempData,
-                 })
-             }
-         })
+             //we already got stores full lists in dataArray || shufersalData etc... so. we'll need to shorten em.
 
-         //tiv
-         tivTaamData.then((data) => {
-             let tempData = [];
-             let listPrice =0;
-        //    let economList = this.state.economList;
-            let j =0;
+             // all we need is just a list of chipest items with unic itemNames. We dont have such yet, but just
 
-             for (let i = 0; i < data.length; i++) {
-                 tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
-                 listPrice += data[i].price;
+             //few lines up we iterate through this lists, let's try to collect the demanded list
 
-                 // if (data[i].price < economList[j].item.price && data[i].itemName === economList[j].item.itemName){
-                 //     economList.replace(economList[j], {item: data[i], store: 'tivTaam'});
-                 // }else if (data[i].itemName !== economList[j].item.itemName){
-                 //
-                 //     economList.splice(j, 0, {item: data[i], store: 'tivTaam'});
-                 //     j++;
-                 // }
-                 //
-                 //
-                 // j++;
+             // yay! we got the list cheapestUnicItems ! now lets use it as a filter
 
-                 // for (let j = 0; j < economList.length; j++) {
-                 //     if(economList[j].item.itemName ===  data[i].itemName){
-                 //         if (data[i].price < economList[j].item.price) {
-                 //             economList.replace(economList[j], { item:data[i], store:'tivTaam'});
-                 //         }
-                 //     }
-                 // }
-                     }
+            // let filteredStoreLists = [[],[],[]];
+             cheapestUnicItems.forEach(item =>{
 
-             if (this.state.tivTaamData.length === 0 ) {
-                 if (listPrice < this.state.chippestStoreData.minSum && data.length === list.length ||
-                 this.state.chippestStoreData.minSum === undefined && data.length === list.length) {
-                     this.setState(
-                         {
-                             tivTaamData: tempData,
-                             chippestStoreData:
-                                 {name: 'tivTaam', minSum: listPrice, chippestList: tempData}
-                         });
-                 } else {
-                     this.setState({tivTaamData: tempData});
+                 switch (item[1]) {
+                     case "shufersal":
+                         filteredStoreLists[0].push(item[0]);
+                         break;
+                     case "tivTaam":
+                         filteredStoreLists[1].push(item[0]);
+                         break;
+                     case "ramiLevi":
+                         filteredStoreLists[2].push(item[0]);
+                         break;
+                     default:
+                         console.log('suck dick');
                  }
-             }
 
-         })
-         //rami
-         ramiLeviData.then((data) => {
-             let tempData = [];
-             let listPrice = 0;
-         //    let economList = this.state.economList;
-             let j = 0;
-             for (let i = 0; i < data.length; i++) {
-                 tempData.push([data[i].itemName, data[i].price, data[i].quantity]);
+             })//TODO not functional yet
 
-                 listPrice+=data[i].price;
-                 // if (data[i].price < economList[j].item.price && data[i].itemName === economList[j].item.itemName){
-                 //     economList.replace(economList[j], {item: data[i], store: 'ramiLevi'});
-                 // }else if (data[i].itemName !== economList[j].item.itemName){
-                 //
-                 //     economList.splice(j, 0,  {item: data[i], store: 'ramiLevi'});
-                 //     j++;
-                 // }
-                 //
-                 //
-                 // j++;
-
-                 // for (let j = 0; j < economList.length; j++) {
-                 //     if(economList[j].item.itemName ===  data[i].itemName){
-                 //         if (data[i].price < economList[j].item.price) {
-                 //             economList.replace(economList[j], {item: data[i].price, store: 'ramiLevi'});
-                 //         }
-                 //     }
-                 // }
-
-             }
-
-             //go through economList and short item lists for each store by cutting out the items which cheaper in other store
-             // let shufersalShortedList =[];
-             // let tivTaamShortedList = [];
-             // let ramiLeviShortedList = [];
-
-             //console.log(economList);
-             // for (let i = 0; i < economList.length; i++) {
-             //     switch (economList[i].store) {
-             //         case 'shufersal':
-             //             shufersalShortedList.push(economList[i].item);
-             //             break;
-             //         case 'tivTaam':
-             //             tivTaamShortedList.push(economList[i].item);
-             //             break;
-             //         case 'ramiLevi':
-             //             ramiLeviShortedList.push(economList[i].item);
-             //             break;
-             //     }
-             //
-             //
-             // }
-
-        // console.log(shufersalShortedList);
-        //      console.log(tivTaamShortedList);
-        //      console.log(ramiLeviShortedList);
-        //
-        //
-        //      if(this.state.ramiLeviData.length === 0 ) {
-        //
-        //          if (listPrice < this.state.chippestStoreData.minSum && data.length === list.length ||
-        //              this.state.chippestStoreData.minSum === undefined && data.length === list.length) {
-        //              this.setState(
-        //                  {
-        //                      shufersalData: shufersalShortedList,
-        //                      tivTaamData: tivTaamShortedList,
-        //                      ramiLeviData: ramiLeviShortedList,
-        //                      chippestStoreData:
-        //                          {name: 'ramiLevi',
-        //                              minSum: listPrice,
-        //                              chippestList: tempData}
-        //                  })
-        //          }else {
-        //              this.setState(
-        //                  {
-        //                      shufersalData: shufersalShortedList,
-        //                      tivTaamData: tivTaamShortedList,
-        //                      ramiLeviData: ramiLeviShortedList
-        //                  })
-        //          }
-        //      }
+             console.log(filteredStoreLists);
 
 
-
-             if(this.state.ramiLeviData.length === 0 ) {
-                 if (listPrice < this.state.chippestStoreData.minSum && data.length === list.length ||
-                     this.state.chippestStoreData.minSum === undefined && data.length === list.length) {
-                     this.setState({
-                         ramiLeviData: tempData,
-                          chippestStoreData:
-                             {name: 'ramiLevi', minSum: listPrice, chippestList: tempData}
-                     });
+             if(listSums[0]< listSums[1]){
+                 if(listSums[0] < listSums[2]){
+                     this.setState({shufersalData: filteredStoreLists[0],
+                         tivTaamData: filteredStoreLists[1],
+                         ramiLeviData: filteredStoreLists[2],
+                         chippestStoreData: {list: potentialOptimalLists[0].list, store: potentialOptimalLists[0].store, listSum: listSums[0]}
+                     })
                  }else {
-                     this.setState({ramiLeviData: tempData});
+                     this.setState({shufersalData: shufersalData.list,
+                         tivTaamData: tivTaamData.list,
+                         ramiLeviData: ramiLeviData.list,
+                         chippestStoreData: {list: potentialOptimalLists[2].list, store: potentialOptimalLists[2].store, listSum: listSums[2]}
+                     })
+                 }
+             }else if(listSums[0]>listSums[1]){
+                 if(listSums[1] < listSums[2]){
+                      this.setState({
+                         shufersalData: shufersalData.list,
+                         tivTaamData: tivTaamData.list,
+                         ramiLeviData: ramiLeviData.list,
+                         chippestStoreData: {
+                             list: potentialOptimalLists[1].list,
+                             store: potentialOptimalLists[1].store,
+                             listSum: listSums[1]
+                         }
+
+                     })
+                 }else if(listSums[1]>listSums[2]){
+                     this.setState({
+                         shufersalData: shufersalData.list,
+                         tivTaamData: tivTaamData.list,
+                         ramiLeviData: ramiLeviData.list,
+                         chippestStoreData: {
+                             list: potentialOptimalLists[2].list,
+                             store: potentialOptimalLists[2].store,
+                             listSum: listSums[2]
+                         }
+                     })
                  }
              }
+
+
+
+
+
+         }).catch((rejectionReason) =>{
+             console.log(rejectionReason)
          })
 
-//вроде как в this.state.econmList щс лежит дешевый лист
+
+
+
+
      }
 
 
+
      render() {
-
-
+    console.log(this.state.shufersalData);
 
         if(this.state.isAuth !== 'AUTH'){
             this.setState({data: vegetarianList});
@@ -255,19 +200,23 @@ this.getDataFromStores = this.getDataFromStores.bind(this);
          }
 
 
+//
 
-         if (this.state.ramiLeviData.length === 0 ||
-             this.state.shufersalData.length === 0||
-             this.state.tivTaamData === 0) {
 
-             this.getDataFromStores(this.state.data); //TODO user list to parametrs
+         if (!this.state.chippestStoreData) {
+
+             this.getDataFromStores(this.state.data); //TODO user list to parametrs //
          }
+         console.log(filteredStoreLists);
 
+
+         console.log(this.state.chippestStoreData);
 
          return (
              <div className="mid-table-container">
                  <UserCartContainer data={this.state.data}/>
-                 <StoreTableContainer shufersalData={this.state.shufersalData}
+                 <StoreTableContainer chippestStoreData={this.state.chippestStoreData}
+                                      shufersalData={this.state.shufersalData}
                                       tivTaamData={this.state.tivTaamData}
                                       ramiLeviData={this.state.ramiLeviData}
                                       modeToggled={this.props.modeToggled}/>

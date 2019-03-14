@@ -33,10 +33,9 @@ export class StoreTableContainer extends React.Component{
             ramiLeviData: this.props.ramiLeviData});
         }
 
-
         let img;
 
-        switch (this.state.chippestStoreData.name) {
+        switch (this.state.chippestStoreData.store) {
             case "shufersal":
                 img = store_1;
                 break;
@@ -49,7 +48,6 @@ export class StoreTableContainer extends React.Component{
 
         switch (this.state.modeToggled) {
             case "optimal":
-
                 return(
 
                     <div id="stores-table-container">
@@ -58,7 +56,7 @@ export class StoreTableContainer extends React.Component{
                                 <img src={img}/>
                             </div>
                         </span>
-                        <ItemsTable  storeData={this.state.chippestStoreData.chippestList} extended={true} size="full" incrementable={false}/>
+                        <ItemsTable  storeData={this.props.chippestStoreData.list} extended={true} size="full" incrementable={false}/>
                     </div>
 
                 );
@@ -80,9 +78,9 @@ export class StoreTableContainer extends React.Component{
                                 <img src={store_3}/>
                             </div>
                         </span>
-                        <ItemsTable storeData={this.state.shufersalData} extended={true} size="small" incrementable={false}/>
-                        <ItemsTable storeData={this.state.tivTaamData} extended={true} size="small" incrementable={false}/>
-                        <ItemsTable storeData={this.state.ramiLeviData} extended={true} size="small" incrementable={false}/>
+                        <ItemsTable storeData={this.props.shufersalData} extended={true} size="small" incrementable={false}/>
+                        <ItemsTable storeData={this.props.tivTaamData} extended={true} size="small" incrementable={false}/>
+                        <ItemsTable storeData={this.props.ramiLeviData} extended={true} size="small" incrementable={false}/>
                     </div>
                 );
                 break;

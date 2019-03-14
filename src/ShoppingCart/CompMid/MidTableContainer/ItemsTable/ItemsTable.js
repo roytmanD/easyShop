@@ -10,7 +10,6 @@ export class ItemsTable extends React.Component{
  constructor(props){
      super(props);
      this.state = {
-         data: this.props.data,
          storeData: this.props.storeData,
          extended: this.props.extended,
          size: this.props.size,
@@ -37,7 +36,6 @@ export class ItemsTable extends React.Component{
      //             incrementable: this.props.incrementable});
      // }
 
-
      if(this.props.storeData === undefined){
       return (   <div>huy</div>);
      }else {
@@ -60,3 +58,6 @@ export class ItemsTable extends React.Component{
 }
 
 
+
+
+//  <TableContents data={this.props.data}/>

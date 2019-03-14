@@ -1,23 +1,11 @@
 import React from 'react';
 
-// let data = [
-//     ['item 1', 2, 56],
-//     ['item 2', 3, 965],
-//     ['item 3', 1, 345],
-// ]
-
-
-let data = ['item',
-'jtem',
-'ktem',
-    'ktem',
-    'ktem'];
-
 export class TableContents extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
+            list: this.props.list,
             data: this.props.data, //this data goes from place marked as TODO 4200
             incrementable: this.props.incrementable,
             extended: this.props.extended,
@@ -27,24 +15,28 @@ export class TableContents extends React.Component{
 
     render() {
         if(this.state.data !== this.props.data){
-            this.setState({data:this.props.data})
+            this.setState({list: this.props.list, data:this.props.data})
         }
 
-        //TODO gottcha catch shit about empty data if it comes
-
-        console.log(this.state.data);
-        if(this.state.data === undefined){
+ if(!this.state.extended){
             return(
-                <div>parasha</div>
+                <tbody>
+                { this.props.list.map((element, index) =>
+                    <tr key={index}>
+                        {this.state.extended ?   <td key={index}>{element}</td> : <td key={index}>{element}</td>}
+                        { <UserCartTableTd/> }
+                    </tr>
+                )}
+                </tbody>
             );
         }else{
         return (
             <tbody>
             { this.state.data.map((element, index) =>
                 <tr key={index}>
-                    {this.state.extended ?   <td key={index}>{element[0]}</td> : <td key={index}>{element}</td>}
-                    {this.state.incrementable ? <UserCartTableTd/> : <td className={this.state.size}>{element[2]}</td>}
-                    {this.state.extended ? <td key={index}>{element[1]}</td> : ""}
+                    {this.state.extended ?   <td key={index}>{element.itemName}</td> : <td key={index}>{element.itemName}</td>}
+                    {this.state.incrementable ? <UserCartTableTd/> : <td className={this.state.size}>{element.quantity}</td>}
+                    {this.state.extended ? <td key={3+ index}>{element.price}</td> : ""}
                 </tr>
             )}
             </tbody>

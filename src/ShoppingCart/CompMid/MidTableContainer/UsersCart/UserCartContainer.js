@@ -13,12 +13,6 @@ constructor(props){
 }
     render() {
 
-    // if(this.state.data.length === 0) {
-    //     let currentList = DataBase.getCurrentList();
-    //     currentList.then((data) => {
-    //         this.setState({data: data});
-    //     })
-    // }
         if(this.state.data !== this.props.data){
             this.setState({data: this.props.data});
         }
@@ -27,8 +21,8 @@ constructor(props){
             <div className="users-cart-container">
                 <div className="cart-table-header">My items</div>
                 <div className="user-cart-table">
-                    <TableTitle data={this.state.data} extended={false} size="full" incrementable={true}/>
-                    <TableContents data={this.state.data} extended={false} size="full" incrementable={true}/>
+                    <TableTitle extended={false} size="full" incrementable={true}/>
+                    <TableContents list={this.state.data} extended={false} size="full" incrementable={true}/>
                 </div>
             </div>
         );

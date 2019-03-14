@@ -95,7 +95,6 @@ let query = JSON.stringify(q);
 
                   for(let i =0; i< res.length; i++) {
                       for (let j = 0; j < res[i].list.length; j++) {
-                         // currentUserItems.push(res[j].list);
                           if(res[i].list[j]) {
                               currentUserItems.push(res[i].list[j]);
                           }
@@ -121,10 +120,8 @@ let query = JSON.stringify(q);
     },
 
     async getCurrentList(){
-        console.log(sessionStorage.getItem("currentList"));
 
    let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList"));
-   console.log(currentList); //TODO ЕСТЬ КОНТАКТ
       let list = currentList.then((data)=>{
 //TODO catchin respons&network errors for loosers, huh?
             return data[0].list;
@@ -133,9 +130,6 @@ let query = JSON.stringify(q);
             let currentList = [];
             for(let i = 0; i <response.length; i++) {
                 currentList.push(response[i]);
-                console.log(currentList);
-                currentList.sort();
-                console.log(currentList);
             }
 
             return currentList;
@@ -147,30 +141,27 @@ let query = JSON.stringify(q);
 
     getUsersListItemsPricedBy(shop, list){
 
-
-        let q='{ itemName: { $in: [ ';
+        let j='{ itemName: { $in: [ ';
         for (let i = 0; i <list.length ; i++) {
             if(i===0){
-                q = q.concat(`"${list[i]}"`);
+                j = j.concat(`"${list[i]}"`);
             }else {
-                q = q.concat(`, "${list[i]}"`);
+                j = j.concat(`, "${list[i]}"`);
             }
         }
-       q = q.concat("] } }");
+       j = j.concat("] } }");
 
-
-     //   let query = JSON.stringify(q);
-        let s = {"itemName" : 1};
-        let sort = JSON.stringify(s);
-        let url = BASE_URL + EASY_SHOP +"/"+shop+"?q="+ q +'&s='+ sort +"&apiKey="+API_KEY;
-
+        let js = JSON.stringify(j);
+        let q = j;
+        let query = JSON.stringify(q);
+        let url = BASE_URL + EASY_SHOP +"/"+shop+"?q="+ q+"&apiKey="+API_KEY;
 
 
         let res;
         res = fetch(url).then((response)=> response.json());
 
         let shopList = res.then((data)=>{
-          return data;
+          return {list: data, store: shop};
         })
 
         return shopList;
@@ -209,14 +200,11 @@ let query = JSON.stringify(q);
     },
     getShopListByName(name) {
         let q={"name":name};
-
         let query=JSON.stringify(q);
         let res;
-        let url = BASE_URL + GET_shopLists_Url +"?q="+query +"&apiKey=" + API_KEY;//todo
+        let url = BASE_URL + GET_shopLists_Url +"?q="+query+"&apiKey=" + API_KEY;
         res = fetch(url).then((response) => response.json());
         return res;
-
-        //TODO : try request + &sort= but how to sort not by alue but in list inced json via adding S param
     },
 
 
