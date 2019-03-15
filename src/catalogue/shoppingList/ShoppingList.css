@@ -16,13 +16,13 @@
 }
 
 .inputContainer{
-    /* overflow-x: scroll;
-     width: 900px;
-     height: 30vh;
-     position: relative;
-     left: 30%;*/
+   /* overflow-x: scroll;
+    width: 900px;
+    height: 30vh;
+    position: relative;
+    left: 30%;*/
     display: flex;
-    overflow-x: scroll;
+overflow-x: scroll;
 }
 
 input{

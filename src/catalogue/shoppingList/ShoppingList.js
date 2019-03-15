@@ -54,16 +54,16 @@ class ShoppingList extends React.Component {
         let listName=this.nameRef.current.value;
         let allRefs = this.allRefs;
         console.log(allRefs.map((ref) => {
-            return ref.current.value
+           return ref.current.value
         }));
         for (let i = 0; i < allRefs.length; i++) {
             if(allRefs[i].current.value!==""){
-                shopList.push(allRefs[i].current.value)
-            }}
+            shopList.push(allRefs[i].current.value)
+        }}
         if(shopList!==[]&&listName!==(null||("".trim()))) {
             DataBase.addList(shopList,listName,currentLogin,privatize);
-            alert(`${currentLogin}, your ${listName.split('list')} list is added successfully!`);
-            window.location.reload();
+            alert(`${currentLogin}, your ${listName.replace(/list/g,'')} list is added successfully!`);
+            setTimeout(window.location.reload(),2000);
         }
         else if(listName===null||("".trim())){
             alert('Please come up with some name for the list');
@@ -77,10 +77,10 @@ class ShoppingList extends React.Component {
     }
 
     handlePrivate() {
-        privatize=!privatize;
+privatize=!privatize;
 
-        if(privatize)this.setState({privatizeTextToggler:'private'});
-        else this.setState({privatizeTextToggler:''});
+if(privatize)this.setState({privatizeTextToggler:'private'});
+else this.setState({privatizeTextToggler:''});
         console.log(this.state)
 
     }
@@ -99,15 +99,15 @@ class ShoppingList extends React.Component {
                     <div className='col-9'>
 
 
-                        <div className='row'>
-                            <div className='inputContainer'>
+                            <div className='row'>
+                                <div className='inputContainer'>
 
 
-                                {this.state.inputCols.map((input) => {
-                                    return input
-                                })}
+                                    {this.state.inputCols.map((input) => {
+                                        return input
+                                    })}
+                                </div>
                             </div>
-                        </div>
                         <div className='row'>
                             <div className='col-6'><button  onClick={this.addItemCol}>+</button></div>
                             <div className='col-6'><button  onClick={this.handleCreateList}>Create</button></div>

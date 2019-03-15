@@ -13,11 +13,14 @@ class Search extends React.Component{
         }
     }
 
+
+
+
     render(){
         return(
             <div id='search_container'>
-                <button  type='button' data-toggle="collapse" data-target="#search">search</button>
-                <div id='search' className="collapse"><input /></div>
+                <button  onClick={this.props.search} type='button' >search</button>
+                <input ref={this.props.searchRef}/>
             </div>
         )
     }

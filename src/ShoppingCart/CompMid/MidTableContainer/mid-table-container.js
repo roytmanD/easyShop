@@ -1,5 +1,5 @@
 import React from 'react';
-import DataBase from "../../../dataBase/DataBase";
+import DataBase, {sessionStorage} from "../../../dataBase/DataBase";
 import {UserCartContainer} from "./UsersCart/UserCartContainer";
 import {StoreTableContainer} from "./StoreTableContainer/StoreTableContainer";
 import "./MidTableContainer.css";
@@ -40,6 +40,11 @@ constructor(props){
 this.getDataFromStores = this.getDataFromStores.bind(this);
 }
 
+componentWillMount(){
+    //sessionStorage.setItem("currentList","h");
+
+}
+
      getDataFromStores(list) {
 
          shufersalData = DataBase.getUsersListItemsPricedBy('shufersal', list); //assign shufersalDAta to promis with array
@@ -59,6 +64,8 @@ this.getDataFromStores = this.getDataFromStores.bind(this);
              let tivTaamData = dataArray[1];
              let ramiLeviData = dataArray[2];
 
+             console.log(dataArray);
+
 
          //ok lets think of algorithm
              //what result do we need?
@@ -77,6 +84,10 @@ this.getDataFromStores = this.getDataFromStores.bind(this);
              });
              console.log(potentialOptimalLists); //ok
 
+             if(potentialOptimalLists===[]){
+                 alert("there is no store where you can collect your list, you will be switched to economy mode! ");
+                 this.setState({modeToggled: 'economy'});
+             }
 
             let listSums = [0,0,0];
 
@@ -91,9 +102,10 @@ let cheapestUnicItems = [];
                  listSums[1] += item1.price;
                  listSums[2] += item2.price;
 
+                 //TODO thre is a little mess with stores..  be careful. got to define if tivTaam goes by index 2 or 1
 
                  //creating th cheapest list
-                 let cheapestItem = item0.price > item1.price ? item1.price < item2.price ? [item1, 'tivTaam'] : [item2, 'ramiLevi'] : item0.price < item2.price ? [item0, 'shufersal'] : [item2, 'ramiLevi'];
+                 let cheapestItem = item0.price > item1.price ? item1.price < item2.price ? [item1, 'ramiLevi'] : [item2, 'tivTaam'] : item0.price < item2.price ? [item0, 'shufersal'] : [item2, 'ramiLevi'];
 
                     cheapestUnicItems.push(cheapestItem);
              }
@@ -138,18 +150,18 @@ let cheapestUnicItems = [];
                          chippestStoreData: {list: potentialOptimalLists[0].list, store: potentialOptimalLists[0].store, listSum: listSums[0]}
                      })
                  }else {
-                     this.setState({shufersalData: shufersalData.list,
-                         tivTaamData: tivTaamData.list,
-                         ramiLeviData: ramiLeviData.list,
+                     this.setState({shufersalData: filteredStoreLists[0],
+                         tivTaamData: filteredStoreLists[1],
+                         ramiLeviData: filteredStoreLists[2],
                          chippestStoreData: {list: potentialOptimalLists[2].list, store: potentialOptimalLists[2].store, listSum: listSums[2]}
                      })
                  }
              }else if(listSums[0]>listSums[1]){
                  if(listSums[1] < listSums[2]){
                       this.setState({
-                         shufersalData: shufersalData.list,
-                         tivTaamData: tivTaamData.list,
-                         ramiLeviData: ramiLeviData.list,
+                         shufersalData: filteredStoreLists[0],
+                         tivTaamData: filteredStoreLists[1],
+                         ramiLeviData: filteredStoreLists[2],
                          chippestStoreData: {
                              list: potentialOptimalLists[1].list,
                              store: potentialOptimalLists[1].store,
@@ -159,9 +171,9 @@ let cheapestUnicItems = [];
                      })
                  }else if(listSums[1]>listSums[2]){
                      this.setState({
-                         shufersalData: shufersalData.list,
-                         tivTaamData: tivTaamData.list,
-                         ramiLeviData: ramiLeviData.list,
+                         shufersalData: filteredStoreLists[0],
+                         tivTaamData: filteredStoreLists[1],
+                         ramiLeviData: filteredStoreLists[2],
                          chippestStoreData: {
                              list: potentialOptimalLists[2].list,
                              store: potentialOptimalLists[2].store,
@@ -189,15 +201,20 @@ let cheapestUnicItems = [];
 
      render() {
     console.log(this.state.shufersalData);
+    console.log(sessionStorage);
 
         if(this.state.isAuth !== 'AUTH'){
+
+
             this.setState({data: vegetarianList});
-        }else if (this.state.isAuth === 'AUTH' && this.state.data.length === 0) {
+        }
+        else if (this.state.isAuth === 'AUTH' && this.state.data.length === 0) {
              let currentList = DataBase.getCurrentList();
             currentList.then((data) => {
                  this.setState({data: data});
              })
          }
+
 
 
 //

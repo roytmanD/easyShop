@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import {reject} from "q";
 
 export const BASE_URL = 'https://api.mlab.com/api/1';
 
@@ -7,46 +8,38 @@ export const GET_shopLists_Url = '/databases/easy_shop/collections/shopLists';
 
 export const API_KEY = 'fsJGVMZJ2RYyINyuEhUMfuDgGzcBUEb3';
 
-export let Resp;
 
 const EASY_SHOP = '/databases/easy_shop/collections';
 
-const  AUTH = "AUTH";
+const AUTH = "AUTH";
 
 
 export const sessionStorage = window.sessionStorage;
 
-let currentLogin = 'superuser';
-let currentPassword;
+let currentLogin = null;
 
 
-export let currentUserItems = [];
+const DataBase = {
 
-function getLogin() {
-    return currentLogin;
-}
-
-
-const DataBase=  {
-
-    addToken(login, password){
+    addToken(login, password) {
         let q = {"login": login};
         let query = JSON.stringify(q);
-        //  let data = await fetch(url);
-        let url = BASE_URL +  EASY_SHOP + '/tokens' +"?q="+query  + '&apiKey=' + API_KEY;
-        $.ajax({url:url}).then(function (res) {
-            if(res.length === 0){
-                url = BASE_URL +  EASY_SHOP + '/tokens'  + '?apiKey=' + API_KEY;
+        let url = BASE_URL + EASY_SHOP + '/tokens' + "?q=" + query + '&apiKey=' + API_KEY;
+        $.ajax({url: url}).then(function (res) {
+            if (res.length === 0) {
+                url = BASE_URL + EASY_SHOP + '/tokens' + '?apiKey=' + API_KEY;
                 $.ajax({
                     url: url,
                     data: JSON.stringify(
-                        {"login": login,
-                            "password" : password}
+                        {
+                            "login": login,
+                            "password": password
+                        }
                     ),
                     type: "POST",
                     contentType: "application/json"
                 });
-            }else{
+            } else {
                 alert(`Username "${login}" already exists! can't sign up! try another one!`);
 
             }
@@ -55,26 +48,27 @@ const DataBase=  {
 
     },
 
-    async auth(login, password){
+    async auth(login, password) {
 
-        let q = {"login": login,
-            "password" : password};
-let query = JSON.stringify(q);
+        let q = {
+            "login": login,
+            "password": password
+        };
+        let query = JSON.stringify(q);
+        let url = BASE_URL + EASY_SHOP + '/tokens' + "?q=" + query + '&apiKey=' + API_KEY;
+        $.ajax({url: url})
+            .then(function (res) {
+            console.log(res);
+            if (res.length === 0) {
+                alert('wrong!!')
+            }
+            else {
 
-        let url = BASE_URL +  EASY_SHOP + '/tokens' +"?q="+query  + '&apiKey=' + API_KEY;
-        $.ajax({url:url}).then(function (res) {
-            if(res.length === 0){
-                //TODO SO WHAT?
-            return false;
-            }else{
-               //  alert('success! Authorized as ' + res[0].login );
                 currentLogin = res[0].login;
-
+                console.log(res);
                 sessionStorage.setItem(currentLogin, AUTH);
                 sessionStorage.setItem("lastAuth", currentLogin);//TODO костылек??????? несомненно
-
-                return   true;
-
+                console.log(sessionStorage.getItem(currentLogin))
             }
 
         })
@@ -82,51 +76,64 @@ let query = JSON.stringify(q);
     },
 
 
-    getUsersShopLists(user){ // TODO забирает из бд шопинг листы карент юзера
-        let q = {"login":user}; //TODO lil edit b careful
-        let query = JSON.stringify(q);
-        let url = BASE_URL +  EASY_SHOP + '/shopLists' +"?q="+query  + '&apiKey=' + API_KEY;
-
-        $.ajax({url:url}).then(function (res) {
-            if(res.length === 0 ){
-                alert('oops u fucked up again');
-            }else{
-
-
-                  for(let i =0; i< res.length; i++) {
-                      for (let j = 0; j < res[i].list.length; j++) {
-                          if(res[i].list[j]) {
-                              currentUserItems.push(res[i].list[j]);
-                          }
-                      }
-                  }
-
-            }
-        })
-    },
-
-
-    addList(list,name,currentLogin,privatize) {
+    addList(list, name, currentLogin, privatize) {
         let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
         $.ajax({
             url: url,
-            data: JSON.stringify({"list": list,
-                'login':currentLogin,"name":name,'private':privatize}),
+            data: JSON.stringify({
+                "list": list,
+                'login': currentLogin, "name": name, 'private': privatize
+            }),
             type: "POST",
             contentType: "application/json"
         });
 
-        sessionStorage.setItem("currentList", name);
+        sessionStorage.setItem("currentList",name);
+    },
+
+
+    removeList(doc) { //TODO yet deletes too much..
+        console.log(doc);
+        let query = {"list": doc.json};
+        let q = '?q=' + query;
+        let url = BASE_URL + GET_shopLists_Url + q + '&apiKey=' + API_KEY;
+        console.log(url);
+        $.ajax({
+            url: url,
+            data: JSON.stringify([]),
+            type: 'PUT',
+            contentType: 'application/json'
+        }).catch((e) => {
+            console.log(e)
+        })
+
+    },
+
+    getExactUsersList(login, name) {
+        let regex=".*"+name+".*";
+        let q = {"login": login, "name":name};
+        let query = JSON.stringify(q);
+        let res;
+        let url = BASE_URL + GET_shopLists_Url + "?q=" + query + "&apiKey=" + API_KEY;
+        res = fetch(url).then((response) => response.json());
+        console.log(res);
+        return res;
     },
 
     async getCurrentList(){
+        console.log(sessionStorage.getItem("currentList"));
 
-   let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList"));
-      let list = currentList.then((data)=>{
+  //      let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList"));
+        let currentList = this.getExactUsersList(sessionStorage.getItem("lastAuth"), sessionStorage.getItem("currentList"));
+        console.log(currentList);
+        if(currentList===null)currentList="";
+        let list = currentList.then((data)=>{
 //TODO catchin respons&network errors for loosers, huh?
-            return data[0].list;
+            console.log(data);
+            if(data[0]!==undefined) return data[0].list;
+            else return ['']
 
- }).then((response)=>{
+        }).then((response)=>{
             let currentList = [];
             for(let i = 0; i <response.length; i++) {
                 currentList.push(response[i]);
@@ -149,7 +156,7 @@ let query = JSON.stringify(q);
                 j = j.concat(`, "${list[i]}"`);
             }
         }
-       j = j.concat("] } }");
+        j = j.concat("] } }");
 
         let js = JSON.stringify(j);
         let q = j;
@@ -161,57 +168,42 @@ let query = JSON.stringify(q);
         res = fetch(url).then((response)=> response.json());
 
         let shopList = res.then((data)=>{
-          return {list: data, store: shop};
+            return {list: data, store: shop};
         })
 
         return shopList;
     },
 
-    async getList() {
-        let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
-       try{
-           const response=await fetch(url);
-           if(response.ok){
-               const jsonResponse= await response.json();
-               Resp=jsonResponse;
-               return jsonResponse;
-           }
-           throw new Error('Request failed!')
-       }
-       catch (e) {
-           console.log(e);
-       }
-
-
-
-    },
-
-    removeList(doc){ //TODO yet deletes too much..
-        let query={"list":doc.json};
-        let q='?q='+query;
-        let url=BASE_URL+GET_shopLists_Url+q+'&apiKey='+API_KEY;
-        $.ajax({
-            url: url,
-            data:JSON.stringify([]),
-            type: 'PUT',
-            contentType: 'application/json'
-        }).catch((e)=>{console.log(e)})
-
-    },
-    getShopListByName(name) {
-        let q={"name":name};
-        let query=JSON.stringify(q);
+    getShopListByLogin(login) {
+        let q = {"login": login};
+        let query = JSON.stringify(q);
         let res;
-        let url = BASE_URL + GET_shopLists_Url +"?q="+query+"&apiKey=" + API_KEY;
+        let url = BASE_URL + GET_shopLists_Url + "?q=" + query + "&apiKey=" + API_KEY;
         res = fetch(url).then((response) => response.json());
+        console.log(res);
         return res;
     },
 
 
-    getShopList() {
+    getShopListByName(name) {
+        let regex=".*"+name+".*";
+        let q = {$or:[{"name": {$regex:regex}},{"list":{$in:[{$regex:regex}]}}],"private":{$in:[false,null]}};
+        let query = JSON.stringify(q);
         let res;
-        let url = BASE_URL + GET_shopLists_Url + "?apiKey=" + API_KEY;
+        let url = BASE_URL + GET_shopLists_Url + "?q=" + query + "&apiKey=" + API_KEY;
         res = fetch(url).then((response) => response.json());
+        console.log(res);
+        return res;
+    },
+
+    searchUsersList(user, name) {
+        let regex=".*"+name+".*";
+        let q = {"login": user, $or:[{"name": {$regex:regex}},{"list":{$in:[{$regex:regex}]}}]};
+        let query = JSON.stringify(q);
+        let res;
+        let url = BASE_URL + GET_shopLists_Url + "?q=" + query + "&apiKey=" + API_KEY;
+        res = fetch(url).then((response) => response.json());
+        console.log(res);
         return res;
     }
 

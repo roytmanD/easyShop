@@ -35,7 +35,7 @@ export class TableContents extends React.Component{
             { this.state.data.map((element, index) =>
                 <tr key={index}>
                     {this.state.extended ?   <td key={index}>{element.itemName}</td> : <td key={index}>{element.itemName}</td>}
-                    {this.state.incrementable ? <UserCartTableTd/> : <td className={this.state.size}>{element.quantity}</td>}
+                    { <td className={this.state.size}>{element.quantity}</td>}
                     {this.state.extended ? <td key={3+ index}>{element.price}</td> : ""}
                 </tr>
             )}

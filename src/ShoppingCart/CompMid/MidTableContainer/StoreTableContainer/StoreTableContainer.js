@@ -63,24 +63,26 @@ export class StoreTableContainer extends React.Component{
 
                 break;
             case "econom":
+                let shufersalTags =[(<div className="store1-logo-container-small">
+                    <img src={store_1}/>
+                </div>), (<ItemsTable storeData={this.props.shufersalData} extended={true} size="small" incrementable={false}/>)];
+                let tivTaamTags = [(<div className="store2-logo-container-small" id="green">
+                    <img src={store_2}/>
+                </div>),(<ItemsTable storeData={this.props.tivTaamData} extended={true} size="small" incrementable={false}/>)];
+                let ramiLeviTags = [( <div className="store3-logo-container-small">
+                    <img src={store_3}/>
+                </div>),( <ItemsTable storeData={this.props.ramiLeviData} extended={true} size="small" incrementable={false}/>)];
+
                 return(
                     <div id='stores-table-container'>
                         <span className="stores-logo-container">
-                            <div className="store1-logo-container-small">
-                                <img src={store_1}/>
-                            </div>
-
-                            <div className="store2-logo-container-small" id="green">
-                                <img src={store_2}/>
-                            </div>
-
-                            <div className="store3-logo-container-small">
-                                <img src={store_3}/>
-                            </div>
+                            {this.props.shufersalData.length !==0 ? shufersalTags[0] :<div></div>}
+                            {this.props.tivTaamData.length !==0 ? tivTaamTags[0]:<div></div>}
+                            {this.props.ramiLeviData.length !==0 ?ramiLeviTags[0] : <div></div>}
                         </span>
-                        <ItemsTable storeData={this.props.shufersalData} extended={true} size="small" incrementable={false}/>
-                        <ItemsTable storeData={this.props.tivTaamData} extended={true} size="small" incrementable={false}/>
-                        <ItemsTable storeData={this.props.ramiLeviData} extended={true} size="small" incrementable={false}/>
+                        {this.props.shufersalData.length !==0 ? shufersalTags[1] :<div></div>}
+                        {this.props.tivTaamData.length !==0 ?tivTaamTags[1] :<div></div>}
+                        {this.props.ramiLeviData.length !==0 ?ramiLeviTags[1]:<div></div>}
                     </div>
                 );
                 break;
