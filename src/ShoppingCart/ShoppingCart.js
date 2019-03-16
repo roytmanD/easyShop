@@ -1,7 +1,6 @@
 import React from 'react';
 import '../LeftC.css';
 
-import {sessionStorage} from "../dataBase/DataBase";
 import {CompMid} from "./CompMid/comp_mid";
 
 

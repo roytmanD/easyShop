@@ -26,6 +26,7 @@ export class CompMid extends React.Component{
 
 
     };
+
     render() {
 
         console.log(this.state.modeToggled)//

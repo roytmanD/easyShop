@@ -5,7 +5,6 @@ import Starter from "./starter/Starter";
 import Ads from "../componentsMax/ads/Ads";
 import ShoppingList from "./shoppingList/ShoppingList";
 import CarousalContainer from "./carousel/CarousalContainer";
-import {sessionStorage} from "../dataBase/DataBase";
 
 
 export class CarousalCard {

@@ -9,40 +9,60 @@ export class TableContents extends React.Component{
             data: this.props.data, //this data goes from place marked as TODO 4200
             incrementable: this.props.incrementable,
             extended: this.props.extended,
-            size: this.props.size
+            size: this.props.size,
         }
+        this.increment = this.increment.bind(this);
+        this.decrement = this.decrement.bind(this);
+
     }
+
+    increment(itemName){
+     let curQ = parseInt(sessionStorage.getItem(itemName),10);
+    sessionStorage.setItem(itemName, curQ+1);
+ this.props.onQuantityChange();
+    }
+
+    decrement(itemName){
+        let curQ = parseInt(sessionStorage.getItem(itemName),10);
+        sessionStorage.setItem(itemName, curQ-1);
+        this.props.onQuantityChange();
+    }
+
 
     render() {
         if(this.state.data !== this.props.data){
             this.setState({list: this.props.list, data:this.props.data})
         }
 
- if(!this.state.extended){
+        if(!this.state.extended){
             return(
                 <tbody>
                 { this.props.list.map((element, index) =>
                     <tr key={index}>
                         {this.state.extended ?   <td key={index}>{element}</td> : <td key={index}>{element}</td>}
-                        { <UserCartTableTd/> }
+                        { <td>
+                            <button onClick={ () => this.decrement(element)}>-</button>
+                            {sessionStorage.getItem(element)}
+                            <button onClick={ () => this.increment(element)}>+</button>
+                        </td> }
                     </tr>
                 )}
                 </tbody>
             );
         }else{
-        return (
-            <tbody>
-            { this.state.data.map((element, index) =>
-                <tr key={index}>
-                    {this.state.extended ?   <td key={index}>{element.itemName}</td> : <td key={index}>{element.itemName}</td>}
-                    { <td className={this.state.size}>{element.quantity}</td>}
-                    {this.state.extended ? <td key={3+ index}>{element.price}</td> : ""}
-                </tr>
-            )}
-            </tbody>
-        );
-    }
+            return (
+                <tbody>
+                { this.state.data.map((element, index) =>
+                    <tr key={index}>
+                        {this.state.extended ?   <td key={index}>{element.itemName}</td> : <td key={index}>{element.itemName}</td>}
+                        { <td className={this.state.size}>{sessionStorage.getItem(element.itemName)}</td>}
+                        {this.state.extended ? <td key={3+ index}>{element.price}</td> : ""}
+                    </tr>
+                )}
+                </tbody>
+            );
         }
+    }
 
 }
 
@@ -53,8 +73,8 @@ export class UserCartTableTd  extends React.Component{
         this.state = {quantity: 1
         }
 
-        this.increment = this.increment.bind(this);
-        this.decrement = this.decrement.bind(this);
+        // this.increment = this.increment.bind(this);
+        // this.decrement = this.decrement.bind(this);
     }
 
     increment(){
@@ -75,11 +95,3 @@ export class UserCartTableTd  extends React.Component{
     }
 }
 
-export class PriceTd extends React.Component{
-
-    render() {
-        return (
-            <td  className="price-td"></td>
-        );
-    }
-}

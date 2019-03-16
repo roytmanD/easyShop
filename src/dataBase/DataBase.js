@@ -14,7 +14,6 @@ const EASY_SHOP = '/databases/easy_shop/collections';
 const AUTH = "AUTH";
 
 
-export const sessionStorage = window.sessionStorage;
 
 let currentLogin = null;
 
@@ -139,7 +138,7 @@ const DataBase = {
                 currentList.push(response[i]);
             }
 
-            return currentList;
+            return currentList.sort();
         });
 
 

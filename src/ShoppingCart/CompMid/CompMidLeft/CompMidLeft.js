@@ -1,8 +1,8 @@
 import React from 'react';
 import '../../../LeftC.css';
 
-let total_sum = 420;
-let saved_sum = 5;
+let total_sum = 0;
+let difference ;
 let differenceType = 'ECONOMY';
 
 
@@ -39,9 +39,13 @@ export class CompMidLeft extends React.Component{
 
 
     render(){
+        difference = parseInt(sessionStorage.getItem("optimalTotal") -sessionStorage.getItem("economTotal") ,10);
         if(this.state.modeToggled === "optimal"){
+            total_sum = sessionStorage.getItem("optimalTotal");
             differenceType = "OVERPAY";
+
         }else{
+            total_sum = sessionStorage.getItem("economTotal");
             differenceType = "ECONOMY";
         }
 
@@ -65,7 +69,7 @@ export class CompMidLeft extends React.Component{
                         <p>${total_sum}</p>
 
                         <p>YOUR {differenceType}:</p>
-                        <p>${saved_sum}</p>
+                        <p>${difference}</p>
                     </div>
                 </div>
 

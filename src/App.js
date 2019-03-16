@@ -6,7 +6,7 @@ import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Catalogue from "./catalogue/Catalogue";
 import Registration from "./Registration/Registration"
 import {Footer} from "./footer/Footer";
-import {API_KEY, BASE_URL, sessionStorage} from "./dataBase/DataBase";
+import {API_KEY, BASE_URL} from "./dataBase/DataBase";
 import DataBase from "./dataBase/DataBase";
 import {CarousalCard} from './catalogue/Catalogue';
 import Profile from './profile/Profile';
