@@ -1,5 +1,5 @@
 import React from 'react';
-import CarousalElement from './CarousalElement';
+import CarousalElement from './carEl/CarousalElement';
 import Slider from "react-slick";
 import './CarousalContainer.css';
 

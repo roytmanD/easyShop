@@ -41,6 +41,12 @@ class MidTableContainer extends React.Component {
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
     }
 
+
+    chooseRandomDefaultList(){
+        let defLists = ['vegeterian list', 'Maslenica', 'Buffet list', 'English list'];
+
+       return defLists[Math.floor(Math.random()*defLists.length)];
+    }
   handleQuantityChange(){
         //this method is demanded for rerendering all the tables after item quantity was IN or DEcremented
       return  this.setState({});
@@ -51,7 +57,6 @@ class MidTableContainer extends React.Component {
   calculateListTotal(list){
         if(list !== undefined) {
             let listTotal = 0;
-            console.log(list);
             list.forEach(item => {
                 listTotal += parseInt(sessionStorage.getItem(item.itemName), 10) * item.price;
             })
@@ -70,7 +75,6 @@ class MidTableContainer extends React.Component {
   }
 
     getDataFromStores(list) {
-
         shufersalData = DataBase.getUsersListItemsPricedBy('shufersal', list); //assign shufersalDAta to promis with array
 
         ramiLeviData = DataBase.getUsersListItemsPricedBy('ramiLevi', list);
@@ -88,7 +92,6 @@ class MidTableContainer extends React.Component {
             let tivTaamData = dataArray[1];
             let ramiLeviData = dataArray[2];
 
-            console.log(dataArray);
 
 
             //ok lets think of algorithm
@@ -106,7 +109,6 @@ class MidTableContainer extends React.Component {
             let potentialOptimalLists = dataArray.filter(storeData =>{
                 return storeData.list.length === list.length
             });
-            console.log(potentialOptimalLists); //ok
 
             if(potentialOptimalLists===[]){
                 alert("there is no store where you can collect your list, you will be switched to economy mode! ");
@@ -147,7 +149,6 @@ class MidTableContainer extends React.Component {
             // let filteredStoreLists = [[],[],[]];
             cheapestUnicItems.forEach(item =>{
                 sessionStorage.setItem(item[0].itemName, '1');
-                console.log(item[0]);
                 switch (item[1]) {
                     case "shufersal":
                         filteredStoreLists[0].push(item[0]);
@@ -159,13 +160,10 @@ class MidTableContainer extends React.Component {
                         filteredStoreLists[2].push(item[0]);
                         break;
                     default:
-                        console.log('suck dick');
+                        console.log('error: item belongs to unknown store');
                 }
 
-            })//TODO not functional yet
-
-            console.log(filteredStoreLists);
-
+            })
 
             if(listSums[0]< listSums[1]){
                 if(listSums[0] < listSums[2]){
@@ -207,58 +205,31 @@ class MidTableContainer extends React.Component {
                     })
                 }
             }
-
-
-
-
-
         }).catch((rejectionReason) =>{
             console.log(rejectionReason)
         })
-
-
-
-
-
     }
-
-
-
     render() {
-        console.log(this.state.shufersalData);
-        console.log(sessionStorage);
+        //we got two basic cases here: curr list exists/no
+        if(sessionStorage.getItem("currentList")){
+            //getting currList, parsing promise, setting inner data as state.data
+            if(this.state.data.length === 0) {
+                let currentList = DataBase.getCurrentList();
+                currentList.then((data) => {
+                    if (this.state.data !== data) {
+                        this.setState({data: data});
+                    }
+                });
+            }
+            //if chippestStoreData falsy invoke getDataFromStores to request data from store dbs, parse it,
+                // make the demanded calculations, form the chippestStoreData obj (optimal mode) and filtered lists (econom mode)
 
-        if(this.state.isAuth !== 'AUTH'){
+                if (!this.state.chippestStoreData) {
+    this.getDataFromStores(this.state.data); //list as param
+}
+//todo shell we calculate total each time? yet see no reasons to avoid it, it just sets items for sessionStorage
+this.calculateTotal();
 
-
-            this.setState({data: vegetarianList});
-        }
-        else if (this.state.isAuth === 'AUTH' && this.state.data.length === 0) {
-            let currentList = DataBase.getCurrentList();
-            currentList.then((data) => {
-                this.setState({data: data});
-            })
-        }
-
-
-
-//
-
-
-        if (!this.state.chippestStoreData) {
-
-            this.getDataFromStores(this.state.data); //TODO user list to parametrs //
-        }
-        console.log(filteredStoreLists);
-
-
-        console.log(this.state.chippestStoreData);
-
-
-        // let t = this.calculateListTotal(this.state.chippestStoreData.list);
-        // console.log(t);
-        // console.log(this.state.shufersalData);
-        this.calculateTotal();
         return (
             <div className="mid-table-container">
                 <UserCartContainer onQuantityChange={this.handleQuantityChange} data={this.state.data}/>
@@ -269,8 +240,14 @@ class MidTableContainer extends React.Component {
                                      modeToggled={this.props.modeToggled}/>
             </div>
         );
-
-
+    }else{
+        //this case is for no currList exists
+            return (
+                <div id="createListBlock">You haven't created list yet!
+                    <a id="createListLink" href="/">CREATE LIST</a>
+                </div>
+            )
+        }
     }
 }
 

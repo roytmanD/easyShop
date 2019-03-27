@@ -4,10 +4,21 @@ import logo_twi from "./logo-twi.png";
 import logo_fb from "./logo-fb.png";
 import logo_inst from "./logo-inst.png"
 import "./footer.css";
+import DataBase from '../dataBase/DataBase';
 
 
 export class Footer extends React.Component{
+constructor(props){
+    super(props);
+    this.emRef=React.createRef();
+this.handleSubmitEmail=this.handleSubmitEmail.bind(this);
+}
 
+handleSubmitEmail(){
+    let email=this.emRef.current.value;
+    DataBase.addEmail(sessionStorage.getItem('lastAuth'),email);
+    alert('Subscribed to newsletters');
+}
     render() {
 
         return(
@@ -42,8 +53,8 @@ export class Footer extends React.Component{
                     <div className="subscription-container">
                         <span>
                             <p>Subscribe to our newsletter</p>
-                             <input placeholder="Email address"/>
-                             <button>Ok</button>
+                             <input ref={this.emRef} placeholder="Email address"/>
+                             <button onClick={this.handleSubmitEmail}>Ok</button>
                         </span>
                     </div>
 

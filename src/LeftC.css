@@ -156,3 +156,15 @@ p{
     margin-top: 2%;
     height: 25px;
 }
+
+#createListLink{
+    background-color: red;
+    width: 350px;
+    height: 150px;
+}
+
+#createListBlock{
+    width: 550px;
+    height: 250px;
+    margin-left: 30%;
+}

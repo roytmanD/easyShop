@@ -39,18 +39,21 @@ export class CompMidLeft extends React.Component{
 
 
     render(){
-        difference = parseInt(sessionStorage.getItem("optimalTotal") -sessionStorage.getItem("economTotal") ,10);
-        if(this.state.modeToggled === "optimal"){
-            total_sum = sessionStorage.getItem("optimalTotal");
-            differenceType = "OVERPAY";
-
-        }else{
-            total_sum = sessionStorage.getItem("economTotal");
-            differenceType = "ECONOMY";
-        }
 
 
-        return (
+        if(sessionStorage.getItem("currentList")) {
+            difference = parseInt(sessionStorage.getItem("optimalTotal") - sessionStorage.getItem("economTotal"), 10);
+            if (this.state.modeToggled === "optimal") {
+                total_sum = sessionStorage.getItem("optimalTotal");
+                differenceType = "OVERPAY";
+
+            } else {
+                total_sum = sessionStorage.getItem("economTotal");
+                differenceType = "ECONOMY";
+            }
+
+
+            return (
                 <div id="left-container">
                     <p className="left-bar-header"><strong>START</strong> SAVING MONEY NOW</p>
                     <span className="toggle-container">
@@ -73,7 +76,24 @@ export class CompMidLeft extends React.Component{
                     </div>
                 </div>
 
-        );
+            );
+        }else {
+            return (
+                <div id="left-container">
+                    <p className="left-bar-header"><strong>START</strong> SAVING MONEY NOW</p>
+                    <span className="toggle-container">
+                        <p>Optimal
+                            <div id="toggle-economy">
+                                <label className="switch">
+                                    <input onChange={this.toggleMode} id="mode_toggle" type="checkbox"></input>
+                                    <span className="slider round"/>
+                                </label>
+                            </div>
+                         Economy</p>
+                    </span>
+                </div>
+            );
+        }
     }
 }
 

@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca596c40-54c5-4b6b-a622-b6db86d74299" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/eashy_shop_v0.2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/eashy_shop_v0.2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6d84a8ee-813a-4b08-a3f5-42c733be6361" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/eashy_shop_v0.2.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LeftC.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/LeftC.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/TableContents/TableContents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/TableContents/TableContents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/UsersCart/UserCartContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/UsersCart/UserCartContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShoppingCart/CompMid/comp_mid.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart/CompMid/comp_mid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShoppingCart/ShoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShoppingCart/ShoppingCart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/catalogue/Catalogue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalogue/Catalogue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/catalogue/carousel/CarousalContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalogue/carousel/CarousalContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/catalogue/carousel/CarousalElement.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/catalogue/carousel/CarousalElement.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/catalogue/navBar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalogue/navBar/NavBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/catalogue/starter/Starter.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/catalogue/starter/Starter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componentsMax/ads/Ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/componentsMax/ads/Ads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componentsMax/images/cart.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/componentsMax/images/cart2.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dataBase/DataBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataBase/DataBase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/footer/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/profile/Profile.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,58 +34,59 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="predposledn9ya-suka-popytka" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/TableContents/TableContents.js">
+        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="113">
+              <caret line="225" selection-start-line="225" selection-end-line="225" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js">
+        <entry file="file://$PROJECT_DIR$/src/LeftC.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="990">
-              <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
+            <state relative-caret-position="156">
+              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="220" column="47" lean-forward="true" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="48" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#425#468#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js">
+        <entry file="file://$PROJECT_DIR$/src/dataBase/DataBase.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="41" column="113" selection-start-line="41" selection-start-column="113" selection-end-line="41" selection-end-column="113" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/comp_mid.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/UsersCart/UserCartContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
+            <state relative-caret-position="113">
+              <caret line="114" column="18" selection-start-line="114" selection-start-column="12" selection-end-line="114" selection-end-column="18" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -91,10 +96,30 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sor</find>
+      <find>Style</find>
+      <find>aler</find>
+      <find>alert</find>
+      <find>th</find>
+      <find>tabl</find>
+      <find>hea</find>
+      <find>left</find>
+      <find>tab</find>
+      <find>full</find>
+      <find>left-</find>
+      <find>lef</find>
+      <find>cu</find>
       <find>console</find>
+      <find>consol</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -103,23 +128,63 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/ItemsTable.js" />
-        <option value="$PROJECT_DIR$/src/dataBase/DataBase.js" />
-        <option value="$PROJECT_DIR$/src/catalogue/Catalogue.js" />
-        <option value="$PROJECT_DIR$/src/ShoppingCart/ShoppingCart.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/UsersCart/UserCartContainer.js" />
+        <option value="$PROJECT_DIR$/src/components/Home.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/navBar/NavBar.css" />
+        <option value="$PROJECT_DIR$/src/componentsMax/search/Search.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/search/Search.css" />
+        <option value="$PROJECT_DIR$/src/App.css" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/Registration/Registration.css" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/Hrenj.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/Registration/carouselD.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/carousel/CarouselElement.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/carousel/CarouselContainer.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/footer/Footer.css" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/TableTitle.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/LeftC.css" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/ItemsTable.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/footer/Footer.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/CompMidLeft.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/carousel/CarousalElement.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/carousel/CarousalContainer.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/comp_mid.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/mid-table-container.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/TableContents.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/ShoppingCart.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/navBar/NavBar.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/catalogue/Catalogue.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/shoppingList/ShoppingList.css" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/catalogue/carousel/CarousalContainer.css" />
+        <option value="$PROJECT_DIR$/src/catalogue/shoppingList/ShoppingList.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/carousel/CarousalContainer.js" />
+        <option value="$PROJECT_DIR$/src/componentsDaniel/Registration/Registration.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/navBar/search/Search.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/navBar/NavBar.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.css" />
+        <option value="$PROJECT_DIR$/src/Profile/Profile.js" />
+        <option value="$PROJECT_DIR$/src/footer/footer.css" />
         <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/TableContents/TableContents.js" />
-        <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/comp_mid.js" />
-        <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js" />
+        <option value="$PROJECT_DIR$/src/componentsMax/ads/Ads.js" />
+        <option value="$PROJECT_DIR$/src/footer/Footer.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/carousel/CarousalElement.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/profile/Profile.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/carousel/carEl/cardBody/CardBody.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/Catalogue.js" />
+        <option value="$PROJECT_DIR$/src/catalogue/carousel/carEl/CarousalElement.js" />
+        <option value="$PROJECT_DIR$/src/LeftC.css" />
         <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js" />
+        <option value="$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js" />
+        <option value="$PROJECT_DIR$/src/dataBase/DataBase.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="708" />
+    <option name="width" value="1440" />
+    <option name="height" value="706" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -132,40 +197,53 @@
         <subPane>
           <expand>
             <path>
-              <item name="easyShopCurrent(with .git)" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyShopCurrent(with .git)" type="462c0819:PsiDirectoryNode" />
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyShopCurrent(with .git)" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyShopCurrent(with .git)" type="462c0819:PsiDirectoryNode" />
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyShopCurrent(with .git)" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyShopCurrent(with .git)" type="462c0819:PsiDirectoryNode" />
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="catalogue" type="462c0819:PsiDirectoryNode" />
+              <item name="dataBase" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyShopCurrent(with .git)" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyShopCurrent(with .git)" type="462c0819:PsiDirectoryNode" />
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ShoppingCart" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyShopCurrent(with .git)" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyShopCurrent(with .git)" type="462c0819:PsiDirectoryNode" />
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ShoppingCart" type="462c0819:PsiDirectoryNode" />
               <item name="CompMid" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="easyShopCurrent(with .git)" type="b2602c69:ProjectViewProjectNode" />
-              <item name="easyShopCurrent(with .git)" type="462c0819:PsiDirectoryNode" />
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ShoppingCart" type="462c0819:PsiDirectoryNode" />
               <item name="CompMid" type="462c0819:PsiDirectoryNode" />
               <item name="CompMidLeft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyShop-preStyling" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easyShop-preStyling" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ShoppingCart" type="462c0819:PsiDirectoryNode" />
+              <item name="CompMid" type="462c0819:PsiDirectoryNode" />
+              <item name="MidTableContainer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -174,13 +252,28 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="carou&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2 4/src/catalogue/carousel/CarousalContainer.js&#10;D&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2 4/src/dataBase/DataBase.js&#10;na&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2 4/src/catalogue/navBar/NavBar.js&#10;f&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2 4/src/footer/Footer.js&#10;sessionSto&#9;null&#9;null&#10;Dat&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2/src/dataBase/DataBase.js&#10;ap&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2/src/App.js&#10;.current&#9;null&#9;null&#10;N&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2/src/catalogue/navBar/NavBar.js&#10;Сф&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2/src/catalogue/Catalogue.js&#10;Car&#9;null&#9;null&#10;C&#9;null&#9;null&#10;app&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3 copy 2/src/App.js&#10;sh&#9;null&#9;null&#10;s&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/catalogue/shoppingList/ShoppingList.js&#10;nav&#9;null&#9;null&#10;Sea&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/catalogue/search/Search.js&#10;ele&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/catalogue/carousel/CarousalElement.css&#10;Ca&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/catalogue/carousel/CarousalContainer.css&#10;it&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/catalogue/shoppingList/itemList.js&#10;shop&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/catalogue/shoppingList/ShoppingList.css&#10;ca&#9;FILE&#9;file:///Users/maxgorelik/WebstormProjects/easyShop-master-3/src/componentsMax/carousel/CarousalContainer.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/catalogue/carousel/carEl" />
+      <recent name="$PROJECT_DIR$/src/componentsMax/ads/images" />
+      <recent name="$PROJECT_DIR$/src/componentsMax/ads" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/catalogue/navBar" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/componentsDaniel/footer" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -194,44 +287,79 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ca596c40-54c5-4b6b-a622-b6db86d74299" name="Default Changelist" comment="" />
-      <created>1552555743919</created>
+      <changelist id="6d84a8ee-813a-4b08-a3f5-42c733be6361" name="Default Changelist" comment="" />
+      <created>1551469309193</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1552555743919</updated>
-      <workItem from="1552555748370" duration="4295000" />
-      <workItem from="1552755628384" duration="1213000" />
-      <workItem from="1552757138055" duration="10894000" />
+      <updated>1551469309193</updated>
+      <workItem from="1551469310711" duration="2200000" />
+      <workItem from="1551471589273" duration="1769000" />
+      <workItem from="1551476485872" duration="4532000" />
+      <workItem from="1551630344199" duration="88103000" />
+      <workItem from="1552075309784" duration="4212000" />
+      <workItem from="1552081307782" duration="44541000" />
+      <workItem from="1552183998979" duration="51314000" />
+      <workItem from="1552317070470" duration="37107000" />
+      <workItem from="1552463423352" duration="48203000" />
+      <workItem from="1552815183272" duration="2741000" />
+      <workItem from="1552900349476" duration="40460000" />
+      <workItem from="1553693171304" duration="11182000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16402000" />
+    <option name="totallyTimeSpent" value="336364000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="708" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="706" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4975728" visible="true" weight="0.2494043" />
-      <window_info id="Structure" order="1" sideWeight="0.50242716" side_tool="true" visible="true" weight="0.2494043" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49125874" visible="true" weight="0.24876674" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" sideWeight="0.50874126" side_tool="true" weight="0.24876674" />
+      <window_info id="Favorites" order="3" sideWeight="0.5020408" side_tool="true" weight="0.2494043" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49960285" weight="0.32738853" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989429" weight="0.30944625" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32876712" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50119144" side_tool="true" weight="0.32861635" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4988086" visible="true" weight="0.33116883" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010571" side_tool="true" weight="0.32866243" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" visible="true" weight="0.3257329" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -241,10 +369,240 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/footer/Footer.css" />
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/ItemsTable.js" />
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/TableTitle.js" />
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3977" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/LeftC.css" />
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/footer/Footer.js" />
+    <entry file="file://$PROJECT_DIR$/src/catalogue/starter/Starter.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/ShoppingCart.js" />
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/comp_mid.js" />
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/TableContents.js" />
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/mid-table-container.js" />
+    <entry file="file://$PROJECT_DIR$/src/componentsMax/signUp/SignUp.js" />
+    <entry file="file://$PROJECT_DIR$/src/catalogue/shoppingList/itemList.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/componentsDaniel/CompMidLeft.js" />
+    <entry file="file://$PROJECT_DIR$/src/Registration/Registration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-222">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/shoppingList/ShoppingList.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/carousel/carEl/CarousalElement.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/navBar/search/Search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="67" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/shoppingList/ShoppingList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/navBar/searchResult/SearchResult.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/carousel/CarousalContainer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-873">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/footer/footer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/UsersCart/UserCartContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/StoreTableContainer/StoreTableContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="80" column="31" lean-forward="true" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/componentsMax/ads/images/ad1.jpg" />
+    <entry file="file://$PROJECT_DIR$/src/componentsMax/ads/Ads.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/ItemsTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+        <state relative-caret-position="330">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/TableContents/TableContents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/MidTableContainer.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20648">
+          <caret line="17114" column="12" selection-start-line="17114" selection-start-column="12" selection-end-line="17114" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/comp_mid.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/ShoppingCart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/componentsMax/ads/Ads.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/profile/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/navBar/NavBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/carousel/carEl/cardBody/CardBody.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/Catalogue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1845">
+          <caret line="129" column="49" selection-start-line="129" selection-start-column="49" selection-end-line="129" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/carousel/CarousalContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/footer/Footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/starter/Starter.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-94">
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catalogue/carousel/carEl/CarousalElement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="76" column="50" lean-forward="true" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -253,79 +611,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/ShoppingCart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/catalogue/Catalogue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="61" selection-start-line="6" selection-start-column="61" selection-end-line="6" selection-end-column="61" />
+        <state relative-caret-position="137">
+          <caret line="220" column="47" lean-forward="true" selection-start-line="220" selection-start-column="47" selection-end-line="220" selection-end-column="48" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#425#468#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LeftC.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="225" selection-start-line="225" selection-end-line="225" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dataBase/DataBase.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="59" column="19" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/UsersCart/UserCartContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/ItemsTable/TableContents/TableContents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/comp_mid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/MidTableContainer/mid-table-container.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ShoppingCart/CompMid/CompMidLeft/CompMidLeft.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="41" column="113" selection-start-line="41" selection-start-column="113" selection-end-line="41" selection-end-column="113" />
+        <state relative-caret-position="113">
+          <caret line="114" column="18" selection-start-line="114" selection-start-column="12" selection-end-line="114" selection-end-column="18" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -6,7 +6,7 @@ import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Catalogue from "./catalogue/Catalogue";
 import Registration from "./Registration/Registration"
 import {Footer} from "./footer/Footer";
-import {API_KEY, BASE_URL} from "./dataBase/DataBase";
+//import {API_KEY, BASE_URL, sessionStorage} from "./dataBase/DataBase";
 import DataBase from "./dataBase/DataBase";
 import {CarousalCard} from './catalogue/Catalogue';
 import Profile from './profile/Profile';
@@ -59,7 +59,7 @@ class App extends Component {
         let searchInput = this.searchRef.current.value;
         if(this.state.isAuth==='AUTH') {
             let currentUser = sessionStorage.getItem('lastAuth');
-            DataBase.searchUsersList(currentUser, searchInput)
+            DataBase.searchUsersListByName(currentUser, searchInput)
                 .then((d) => {
                     searchRes = [];
 
@@ -218,7 +218,7 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Switch>
-
+                            <Route exact path="/" component={Catalogue}/>
                             <Route path="/cart" component={ShoppingCart}/>
                             <Route path="/catalogue" component={Catalogue}/>
                             <Route path="/registration">

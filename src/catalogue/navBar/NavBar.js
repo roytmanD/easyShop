@@ -4,7 +4,7 @@ import './NavBar.css';
 import logo from './logo@2x.png';
 
 import Search from './search/Search';
-import CarousalElement from "../carousel/CarousalElement";
+import CarousalElement from "../carousel/carEl/CarousalElement";
 import SearchResult from "./searchResult/SearchResult";
 
 
