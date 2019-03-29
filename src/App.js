@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
+
+import Location from './Location/Location';
 import NavigBar from "./catalogue/navBar/NavBar";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import Catalogue from "./catalogue/Catalogue";
 import Registration from "./Registration/Registration"
 import {Footer} from "./footer/Footer";
-//import {API_KEY, BASE_URL, sessionStorage} from "./dataBase/DataBase";
+
 import DataBase from "./dataBase/DataBase";
 import {CarousalCard} from './catalogue/Catalogue';
 import Profile from './profile/Profile';
@@ -94,7 +96,6 @@ class App extends Component {
                     })
                 })
         }
-        // .then((data)=>{return data.map((d)=>{console.log(d.list);return d.list})});
 
 
     }
@@ -170,32 +171,6 @@ class App extends Component {
         else {
             alert('Fill in login and password!')
         }
-
-        ///Todo fetching directly from the method
-
-//             let q = {
-//                 "login": login,
-//                 "password": password
-//             };
-//             let query = JSON.stringify(q);
-//             let url = BASE_URL + EASY_SHOP + '/tokens' + "?q=" + query + '&apiKey=' + API_KEY;
-//             fetch(url).then(
-//                 function (res) {
-//                     console.log(res);
-//                     if (res.length === 0) {
-//                         alert('wrong!!')
-//                     }
-//                     else {
-// let currentLogin;
-//                         currentLogin = res[0].login;
-//                         console.log(res);
-//                         sessionStorage.setItem(currentLogin, AUTH);
-//                         sessionStorage.setItem("lastAuth", currentLogin);//TODO костылек??????? несомненно
-//                         console.log(sessionStorage.getItem(currentLogin))
-//                     }
-//
-//                 }
-//             ).then((data)=>console.log(data))
     }
 
 
@@ -221,6 +196,7 @@ class App extends Component {
                             <Route exact path="/" component={Catalogue}/>
                             <Route path="/cart" component={ShoppingCart}/>
                             <Route path="/catalogue" component={Catalogue}/>
+                            <Route path="/location" component = {Location}/>
                             <Route path="/registration">
                                 <Registration
                                     isAuth={this.state.isAuth}

@@ -5,12 +5,16 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "cors": "^2.8.5",
+    "google-maps-react": "^2.0.2",
     "jquery": "^3.3.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-google-location": "^1.2.2",
+    "react-google-places": "^2.0.3",
     "react-router-dom": "^4.2.2",
     "react-scripts": "^2.1.8",
-    "react-slick": "^0.23.2"
+    "react-slick": "^0.23.2",
+    "react-sweet-progress": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -24,20 +24,10 @@ export class ItemsTable extends React.Component{
          this.setState({size: this.props.size})
      }
 
-
-     //
-     // if(this.state.storeData !== this.props.storeData || this.state.size !== this.props.size){
-     //     console.log(this.state.storeData);
-     //     this.setState(
-     //         {data: this.props.data,
-     //             storeData: this.props.storeData,
-     //             extended: this.props.extended,
-     //             size: this.props.size,
-     //             incrementable: this.props.incrementable});
-     // }
-
      if(this.props.storeData === undefined){
-      return (   <div>huy</div>);
+      return (   <div>
+      <progress className="data-waiting-pb"></progress>
+      </div>);
      }else {
          return (
              <div className={"store-table-" + this.props.size} id="scrollable">
