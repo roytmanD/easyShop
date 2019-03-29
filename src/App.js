@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-
 import Location from './Location/Location';
 import NavigBar from "./catalogue/navBar/NavBar";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";

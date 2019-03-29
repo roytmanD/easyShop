@@ -3,10 +3,4 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="JSX" />
   </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/src/Location/Location.css" />
-    <file url="file://$PROJECT_DIR$/src/Location/Location.js" />
-    <file url="file://$PROJECT_DIR$/src/Location/MapContainer/MapContainer.css" />
-    <file url="file://$PROJECT_DIR$/src/Location/MapContainer/MapContainer.js" />
-  </component>
 </project>

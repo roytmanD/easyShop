@@ -1,0 +1,28 @@
+.map-container{
+    margin-bottom: 0;
+    /*padding-bottom: 40em;*/
+    width: 75%;
+}
+.location-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+#location-left{
+    background-color: #E84C3D;
+    width: 25%;
+    height: 50em;
+    padding: 3%;
+    float: left;
+}
+
+.radius-block{
+    font-size: 25pt;
+}
+
+.apply-radius-btn{
+    margin-top: 30em;
+    width: 10em;
+    height: 3em;
+}
