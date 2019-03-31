@@ -107,7 +107,7 @@ class MidTableContainer extends React.Component {
             //1)list
             //2)
             let potentialOptimalLists = dataArray.filter(storeData =>{
-                return storeData.list.length === list.length
+                return storeData.list.length === list.length; //TODO STOP! DOES IT REALLY FILLS THE ARRAY WITH STRINGS NOT BOOLEAN?
             });
 
             if(potentialOptimalLists===[]){
