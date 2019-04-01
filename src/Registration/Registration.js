@@ -1,9 +1,5 @@
 import React from 'react';
-import DataBase from "../dataBase/DataBase";
 import {Link, Redirect, Route, Switch} from 'react-router-dom';
-import NavigBar from "../catalogue/navBar/NavBar";
-import Catalogue from "../catalogue/Catalogue";
-
 
 class Registration extends React.Component {
 
@@ -17,7 +13,6 @@ class Registration extends React.Component {
             passwordValue: 'empty'
         };
 
-        console.log(this.props);
 this.toggleAuth=this.toggleAuth.bind(this);
 
     }

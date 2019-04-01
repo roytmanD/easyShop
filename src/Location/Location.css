@@ -22,7 +22,12 @@
 }
 
 .apply-radius-btn{
-    margin-top: 30em;
+    margin-top: 10em;
     width: 10em;
     height: 3em;
 }
+
+.radius-m{
+    font-size: 16pt;
+}
+
