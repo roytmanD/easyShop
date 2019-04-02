@@ -4,3 +4,8 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.reg p{
+    color: #222222;
+    font-size: larger;
+}

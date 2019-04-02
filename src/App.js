@@ -11,6 +11,8 @@ import {Footer} from "./footer/Footer";
 import DataBase from "./dataBase/DataBase";
 import {CarousalCard} from './catalogue/Catalogue';
 import Profile from './profile/Profile';
+import {About} from "./About/About";
+import {Contacts} from "./Conctacts/Contacts";
 
 
 let isAuth = sessionStorage.getItem(sessionStorage.getItem('lastAuth'));
@@ -196,6 +198,8 @@ class App extends Component {
                             <Route path="/cart" component={ShoppingCart}/>
                             <Route path="/catalogue" component={Catalogue}/>
                             <Route path="/location" component = {Location}/>
+                            <Route path="/about" component={About}/>
+                            <Route path="/contacts" component={Contacts}/>
                             <Route path="/registration">
                                 <Registration
                                     isAuth={this.state.isAuth}

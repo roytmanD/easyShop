@@ -25,8 +25,6 @@ toggleAuth(){
 
 
 
-
-
     render() {
         if (this.state.isAuth === 'non-auth' || this.state.isAuth === null) {
             return (
@@ -36,7 +34,10 @@ toggleAuth(){
                         <label htmlFor="login_input">Login</label>
                         <input ref={this.props.pwdRef} id="password_input" placeholder="enter yo password"/>
                         <label htmlFor="password_input">Password</label>
-                        <button type="submit" onClick={this.props.handleSignIn}>Sign in</button>
+
+                        <p className="reg">Don't have an EasyShop account yet?</p>
+                        <button type="submit" onClick={this.props.handleSignIn}>Sign up</button>
+                        <p className="reg">Already registered?</p>
                         <button type="submit" onClick={this.toggleAuth}  >Log in</button>
                     </div>
                 </div>

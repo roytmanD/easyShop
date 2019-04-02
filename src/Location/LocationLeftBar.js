@@ -12,9 +12,6 @@ constructor(props){
     this.changeFilter = this.changeFilter.bind(this);
 }
 
-
-
-
 changeFilter(){
 
     console.log(sessionStorage);
@@ -34,8 +31,8 @@ changeFilter(){
     this.props.handleFilterChange(checkedStores, this.inputRef.current.value);
 }
 
-
     render() {
+
 let x=500;
 if(this.state.change){
     x=this.inputRef.current.value
@@ -46,7 +43,7 @@ if(this.state.change){
                     <p><strong>LOCATE </strong>FOODSTORES NEARBY</p>
                         <input onChange={()=>{this.setState({
                             change:true
-                        })}} type="range" id="radius" ref={this.inputRef} min="500" max="10000" />
+                        })}} type="range" id="radius" step="100" ref={this.inputRef} min="500" max="10000" />
                 </div>
                 <p className="radius-m">{x} meters</p>
            <StoreFilterBox/>
@@ -60,16 +57,11 @@ if(this.state.change){
 
 export default LocationLeftBar;
 
-
-
 class StoreFilterBox  extends React.Component{
 constructor(props){
     super(props);
 }
-
-
     render() {
-
         return(
             <div className="stores-filter">
                 <div className="store-filter">
@@ -90,8 +82,6 @@ constructor(props){
 
 }
 
-
-
 class CheckBox extends React.Component{
     constructor(props) {
         super(props);
@@ -110,19 +100,9 @@ class CheckBox extends React.Component{
     }
 
     render(){
-        let txt;
-        // if (this.state.isChecked) {
-        //     txt = 'checked'
-        // } else {
-        //     txt = 'unchecked'
-        // }
 
-        // remove () after handleChecked because you need pass
-        // reference to function
-        // also add return before <div>
         return <div>
             <input type="checkbox" onChange={ this.handleChecked }/>
-            {/*<p>This box is {txt}</p>*/}
         </div>
     }
 }

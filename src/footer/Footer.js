@@ -30,7 +30,7 @@ handleSubmitEmail(){
 
                   <div className="about-contact-terms-link-container">
                     <a href="/about">About us</a>
-                    <a href="/contact">Contact</a>
+                    <a href="/contacts">Contact</a>
                     <a href="/terms">Terms & Conditions</a>
                 </div>
 

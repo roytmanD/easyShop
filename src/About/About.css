@@ -1,0 +1,25 @@
+.about p{
+    font-size: 24pt;
+   color: #222222;
+}
+
+.about div{
+    height: 40em;
+}
+
+.about a{
+    background-color: #E84C3D;
+}
+
+.about h3{
+    background-color: #b4b7b9;
+}
+
+.about p{
+    color: #E84C3D;
+}
+
+.about h1, h2{
+    color: #E84C3D;
+}
+

@@ -22,14 +22,11 @@ export class Location extends React.Component{
 
         this.state = {
             markers : [],
-            filter: 10000,
             checkedStores: ['shufersal', 'rami+levy', 'tiv+taam']
         }
 
         this.onFilterChange = this.onFilterChange.bind(this);
     }
-
-
 
     setMarkers(stores, inRadius){
 
@@ -38,7 +35,6 @@ export class Location extends React.Component{
             urls.push(base_url + '?location='+CURRENT_GEO +'&radius=' + inRadius + '&keyword=' + store + '&key=' + API_KEY);
         })
 
-
    let storeDataPromises = [];
 
     urls.forEach(url=>{
@@ -46,10 +42,7 @@ export class Location extends React.Component{
         storeDataPromises.push(res);
     });
 
-
     let responses = Promise.all(storeDataPromises);
-
-  //  let jsonResponse = responses.then(data => data.clone().json());
 
 let mrkrs =[];
 let iterCount = 0;
@@ -58,6 +51,7 @@ let iterCount = 0;
                 iterCount++;
             let jsonResponse = d.json();
             jsonResponse.then(data=>{
+                console.log(data.results[0]);
                 for (let i = 0; i < data.results.length; i++) {
                     let storeObj = {name: data.results[i].name,
                                     id: data.results[i].id,
@@ -81,16 +75,14 @@ let iterCount = 0;
 
     }
 
-
     onFilterChange(checkedStores, radius){
-       // this.setState({filter:newFilter});
         this.setMarkers(checkedStores, radius);
     }
+  render() {
 
-
-    render() {
-
-        console.log(this.state.markers);
+        // if(this.state.markers.length === 0){
+        //     this.setMarkers(this.state.checkedStores, 5000);
+        // } //TODO yet dont need this not to increase the ammount of APi queries but gottcha uncomment in prod version
         return(
             <div className='location-container'>
                 <LocationLeftBar handleFilterChange={this.onFilterChange}/>
@@ -107,7 +99,6 @@ let iterCount = 0;
         );
     }
 }
-
 export default GoogleApiWrapper({
     apiKey: (GOOGLE_API_KEY)
 })(Location)
