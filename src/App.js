@@ -68,12 +68,8 @@ class App extends Component {
 
                     for (let i = 0; i < d.length; i++) {
 
-
-                        console.log(d);
-                        console.log(d[i]);
                         searchRes.push(new CarousalCard(d[i].name, d[i].list));
                     }
-                        console.log(searchRes);
                         this.setState({
                             searchRes: searchRes
                         })
@@ -87,11 +83,8 @@ class App extends Component {
                     for (let i = 0; i < d.length; i++) {
 
 
-                        console.log(d);
-                        console.log(d[i]);
                         searchRes.push(new CarousalCard(d[i].name, d[i].list));
                     }
-                    console.log(searchRes);
                     this.setState({
                         searchRes: searchRes
                     })
@@ -105,7 +98,6 @@ class App extends Component {
         logout = <Profile logoutBtn={(<button onClick={this.handleLogout}>Logout</button>)}/>
             //<button onClick={this.handleLogout}>Logout</button>;
         signup = <a id="signup_btn" href='/registration'>Signup</a>;
-        console.log(this.state);
 
         if (this.state.isAuth === null) {
             this.setState({
@@ -120,19 +112,17 @@ class App extends Component {
             })
         }
         else {
-            console.log('fuuuuuuk');
+            console.log(`shit've gone wrong`);
         }
     }
 
 
     handleLogout() {
         sessionStorage.clear();
-        console.log(sessionStorage);
         this.setState({
             isAuth: 'non-auth',
             btn: signup
         });
-        console.log(this.state);
         window.location.reload();
     }
 
@@ -162,7 +152,6 @@ class App extends Component {
             let login = this.logRef.current.value;
             let password = this.pwdRef.current.value;
             DataBase.auth(login, password).then((data) => {
-                console.log(data);
                 alert(`${login} is gloriously authentificated!`)
             }, () => alert(
                 "Invalid login or password! try again"
@@ -176,7 +165,6 @@ class App extends Component {
 
 
     render() {
-        console.log(this.state.searchRes);
         if
         (this.state.isAuth !== null &&
             this.state.isAuth !== sessionStorage.getItem(sessionStorage.getItem('lastAuth')) &&

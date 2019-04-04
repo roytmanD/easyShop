@@ -29,9 +29,9 @@ export class Contacts extends React.Component{
                     <h5>Address:</h5>
                     <p>Legal address: Plaut 10 Rehovot, Israel</p>
                     <p>Head office: Plaut 10, Rehovot, Israel</p>
-                    <Map google={this.props.google} zoom={14} initialCenter={{lat:31.912150,lng:34.806970}}>
-                        <Marker position={{lat:31.912150, lng:34.806970}}/>
-                    </Map>
+                    {/*<Map google={this.props.google} zoom={14} initialCenter={{lat:31.912150,lng:34.806970}}>*/}
+                        {/*<Marker position={{lat:31.912150, lng:34.806970}}/>*/}
+                    {/*</Map>*/}
 
                 </div>
             </div>

@@ -8,9 +8,8 @@ import store3 from '../Images/store_3@2x.png';
 
 
 //let CURRENT_GEO = window.location; //TODO is it browser geo?
-let REHOVOT_GEO = {lat: 31.894756,lng:34.809322};
-let CURRENT_GEO = '31.894756, 34.809322';
-console.log(window.location);
+let MAP_INITIAL_CENTER = {lat: 31.894756,lng:34.809322}; //REHOVOT coords by default
+let CURRENT_GEO = '31.894756, 34.809322'; //REHOVOT by default
 const API_KEY = 'AIzaSyDf5adHJDGMD40gNVM9KETpdweyScIn1HE';
 
 const base_url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
@@ -78,7 +77,27 @@ let iterCount = 0;
     onFilterChange(checkedStores, radius){
         this.setMarkers(checkedStores, radius);
     }
+//TODO WTF
+    getUserCurrentLocation(){
+navigator.geolocation.getCurrentPosition(function(pos){
+});
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                MAP_INITIAL_CENTER = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                CURRENT_GEO = position.coords.latitude + ',' + position.coords.longitude;
+            });}else {
+            console.log('browser does not support geolocation');
+
+CURRENT_GEO = MAP_INITIAL_CENTER.lat +','+ MAP_INITIAL_CENTER.lng;
+        }
+    }
+
   render() {
+
+        this.getUserCurrentLocation();
 
         // if(this.state.markers.length === 0){
         //     this.setMarkers(this.state.checkedStores, 5000);
@@ -87,7 +106,7 @@ let iterCount = 0;
             <div className='location-container'>
                 <LocationLeftBar handleFilterChange={this.onFilterChange}/>
                 <div className='map-container'>
-                    <Map initialCenter={REHOVOT_GEO} google={this.props.google} zoom={14} >
+                    <Map initialCenter={MAP_INITIAL_CENTER} google={this.props.google} zoom={14} >
                         {this.state.markers.map(marker =>{
                             return <Marker key={marker.id} position={{lat:marker.coordinates.lat, lng: marker.coordinates.lng}}/>
                         })}

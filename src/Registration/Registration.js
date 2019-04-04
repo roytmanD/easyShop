@@ -32,7 +32,7 @@ toggleAuth(){
                     <div id="fields-container">
                         <input ref={this.props.logRef} id="login_input" placeholder="enter yo login"/>
                         <label htmlFor="login_input">Login</label>
-                        <input ref={this.props.pwdRef} id="password_input" placeholder="enter yo password"/>
+                        <input type='password' ref={this.props.pwdRef} id="password_input" placeholder="enter yo password"/>
                         <label htmlFor="password_input">Password</label>
 
                         <p className="reg">Don't have an EasyShop account yet?</p>

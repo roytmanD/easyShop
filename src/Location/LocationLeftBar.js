@@ -66,7 +66,7 @@ constructor(props){
             <div className="stores-filter">
                 <div className="store-filter">
                     <p>Shufersal</p>
-                    <CheckBox name="shufersal"></CheckBox>
+                    <CheckBox name="shufersal" ></CheckBox>
                 </div>
                 <div className="store-filter">
                     <p>Rami Levi</p>
@@ -102,7 +102,7 @@ class CheckBox extends React.Component{
     render(){
 
         return <div>
-            <input type="checkbox" onChange={ this.handleChecked }/>
+            <input checked={this.state.isChecked} type="checkbox" onChange={ this.handleChecked }/>
         </div>
     }
 }

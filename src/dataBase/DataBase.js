@@ -20,6 +20,12 @@ let currentLogin = null;
 
 const DataBase = {
 
+    // fuckGoogleBillingUpMethod(){
+    //
+    //     let storesFromDB = getStoresFromDatabase();
+    //
+    //
+    // },
     addToken(login, password) {
         let q = {"login": login};
         let query = JSON.stringify(q);
@@ -143,8 +149,6 @@ const DataBase = {
     },
 
     async getCurrentList() {
-
-        //      let currentList  =   this.getShopListByName(sessionStorage.getItem("currentList"));
         let currentList = this.getExactUsersList(sessionStorage.getItem("lastAuth"), sessionStorage.getItem("currentList"));
         if (currentList === null) currentList = "";
         let list = currentList.then((data) => {
@@ -157,7 +161,6 @@ const DataBase = {
             for (let i = 0; i < response.length; i++) {
                 currentList.push(response[i]);
             }
-
             return currentList.sort();
         });
 
@@ -182,14 +185,12 @@ const DataBase = {
         let q = j;
         let query = JSON.stringify(q);
         let url = BASE_URL + EASY_SHOP + "/" + shop + "?q=" + q + "&apiKey=" + API_KEY;
-
         let res;
         res = fetch(url).then((response) => response.json());
 
         let shopList = res.then((data) => {
             return {list: data, store: shop};
         })
-
         return shopList;
     },
 

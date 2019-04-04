@@ -20,9 +20,6 @@ let vegetarianList = [
     ['potatoes']
 ]
 
-
-let lists ;//LIST frim db // TODO
-
 //TODO mid table container will pass incrementable propperty
 class MidTableContainer extends React.Component {
     constructor(props){
@@ -88,11 +85,6 @@ class MidTableContainer extends React.Component {
         let whenResolve = Promise.all(dataFromStores);
 
         whenResolve.then((dataArray)=>{
-            let shufersalData = dataArray[0];
-            let tivTaamData = dataArray[1];
-            let ramiLeviData = dataArray[2];
-
-
 
             //ok lets think of algorithm
             //what result do we need?
@@ -104,37 +96,47 @@ class MidTableContainer extends React.Component {
             //2) we compare it's length to each of the store lists length to throw away those which shorter ( we dont need to show incomplite list in optimalMode)
             //3)
 
-            //1)list
-            //2)
-            let potentialOptimalLists = dataArray.filter(storeData =>{
-                return storeData.list.length === list.length; //TODO STOP! DOES IT REALLY FILLS THE ARRAY WITH STRINGS NOT BOOLEAN?
-            });
 
-            if(potentialOptimalLists===[]){
-                alert("there is no store where you can collect your list, you will be switched to economy mode! ");
-                this.setState({modeToggled: 'economy'});
-            }
+             let biggestAssortiment = Math.max(dataArray.length);
+            let potentialOptimalLists = [];
+                dataArray.forEach(storeData =>{
+                if( storeData.list.length === biggestAssortiment){
+                  potentialOptimalLists.push(storeData.list);
+                }
+            });
 
             let listSums = [0,0,0];
 
             let cheapestUnicItems = [];
-            for (let i = 0; i < list.length; i++) {
 
-                let  item0 =potentialOptimalLists[0].list[i];
-                let  item1 =potentialOptimalLists[1].list[i];
-                let  item2 =potentialOptimalLists[2].list[i];
+            if(potentialOptimalLists.length>0) {
+                for (let i = 0; i < list.length; i++) {
 
-                listSums[0] += item0.price;
-                listSums[1] += item1.price;
-                listSums[2] += item2.price;
+                    // let item0 = potentialOptimalLists[0].list[i];
+                    // let item1 = potentialOptimalLists[1].list[i];
+                    // let item2 = potentialOptimalLists[2].list[i];
 
-                //TODO thre is a little mess with stores..  be careful. got to define if tivTaam goes by index 2 or 1
+                    let item0 = potentialOptimalLists[0][i];
+                    let item1 = potentialOptimalLists[1][i];
+                    let item2 = potentialOptimalLists[2][i];
 
-                //creating th cheapest list
-                let cheapestItem = item0.price > item1.price ? item1.price < item2.price ? [item1, 'ramiLevi'] : [item2, 'tivTaam'] : item0.price < item2.price ? [item0, 'shufersal'] : [item2, 'ramiLevi'];
+                    if(item0!==undefined){
+                    listSums[0] += item0.price;}
+                    if(item1!==undefined){
+                    listSums[1] += item1.price;}
+                    if (item2!==undefined){
+                    listSums[2] += item2.price;}
 
-                cheapestUnicItems.push(cheapestItem);
+                    //TODO thre is a little mess with stores..  be careful. got to define if tivTaam goes by index 2 or 1
+
+                    //creating th cheapest list
+                    if(item0 !== undefined && item1 !== undefined && item2 !== undefined) {
+                        let cheapestItem = item0.price > item1.price ? item1.price < item2.price ? [item1, 'ramiLevi'] : [item2, 'tivTaam'] : item0.price < item2.price ? [item0, 'shufersal'] : [item2, 'ramiLevi'];
+                        cheapestUnicItems.push(cheapestItem);
+                    }
+                }
             }
+
 
             //here, before setting state, i guess its a good place to calculate econom mode stores lists. here we go!
 
@@ -147,6 +149,12 @@ class MidTableContainer extends React.Component {
             // yay! we got the list cheapestUnicItems ! now lets use it as a filter
 
             // let filteredStoreLists = [[],[],[]];
+
+            //TODO incomplite data
+            if(cheapestUnicItems.length < list.length){
+        alert('not all the of your items exist!');
+            }
+
             cheapestUnicItems.forEach(item =>{
                 sessionStorage.setItem(item[0].itemName, '1');
                 switch (item[1]) {
@@ -170,13 +178,13 @@ class MidTableContainer extends React.Component {
                     this.setState({shufersalData: filteredStoreLists[0],
                         tivTaamData: filteredStoreLists[1],
                         ramiLeviData: filteredStoreLists[2],
-                        chippestStoreData: {list: potentialOptimalLists[0].list, store: potentialOptimalLists[0].store, listSum: listSums[0]}
+                        chippestStoreData: {list: potentialOptimalLists[0], store: 'shufersal', listSum: listSums[0]}
                     })
                 }else {
                     this.setState({shufersalData: filteredStoreLists[0],
                         tivTaamData: filteredStoreLists[1],
                         ramiLeviData: filteredStoreLists[2],
-                        chippestStoreData: {list: potentialOptimalLists[2].list, store: potentialOptimalLists[2].store, listSum: listSums[2]}
+                        chippestStoreData: {list: potentialOptimalLists[2], store: 'tivTaam', listSum: listSums[2]}
                     })
                 }
             }else if(listSums[0]>listSums[1]){
@@ -186,8 +194,8 @@ class MidTableContainer extends React.Component {
                         tivTaamData: filteredStoreLists[1],
                         ramiLeviData: filteredStoreLists[2],
                         chippestStoreData: {
-                            list: potentialOptimalLists[1].list,
-                            store: potentialOptimalLists[1].store,
+                            list: potentialOptimalLists[1],
+                            store: 'ramiLevi',
                             listSum: listSums[1]
                         }
 
@@ -198,8 +206,8 @@ class MidTableContainer extends React.Component {
                         tivTaamData: filteredStoreLists[1],
                         ramiLeviData: filteredStoreLists[2],
                         chippestStoreData: {
-                            list: potentialOptimalLists[2].list,
-                            store: potentialOptimalLists[2].store,
+                            list: potentialOptimalLists[2],
+                            store: 'tivTaam',
                             listSum: listSums[2]
                         }
                     })
